@@ -31,7 +31,7 @@ spa.shell = (function () {
       + '</div>'
 
       + '<div class="content-wrapper">'
-      +   '<div class="content">'
+      +   '<div id="main" class="content">'
       +     '<h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>'
       +     '<div class="pure-g">'
       +     '</div>'
@@ -122,7 +122,7 @@ spa.shell = (function () {
     // Only three regions for now
     jqueryMap = {
       $container : $container,
-      $main      : $container.find('#home-view')
+      $main      : $container.find('#main')
     };
   };
   // End DOM method /setJqueryMap
@@ -130,7 +130,7 @@ spa.shell = (function () {
   // Begin client-side router methods
 
   // Base route
-  /*function index() {
+  function index() {
     if( currentMod != jqueryMap.$main ) {
       currentMod.hide();
     }
@@ -138,7 +138,7 @@ spa.shell = (function () {
     currentMod = jqueryMap.$main;
     currentMod.show();
     //jqueryMap.$main.show();
-  }*/
+  }
 
   // End DOM client-side router methods
 
@@ -156,15 +156,15 @@ spa.shell = (function () {
     setJqueryMap();
 
 
-    //spa.home.initModule(jqueryMap.$main);
-    //jqueryMap.$main.hide();
+    spa.home.initModule(jqueryMap.$main);
+    jqueryMap.$main.hide();
 
     // Default content is "home" screen
-    //currentMod = jqueryMap.$main;
+    currentMod = jqueryMap.$main;
 
     // Set up routes
-    //page('/', index);
-    //page();
+    page('/', index);
+    page();
 
 
 
