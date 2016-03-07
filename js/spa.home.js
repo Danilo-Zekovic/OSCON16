@@ -10,16 +10,16 @@ spa.home = (function (){
   var
     configMap = {
       main_html : String()
-        +     '<h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>'
+        +     '<h2 class="content-head is-center">This is the main view that will change</h2>'
         +     '<div class="pure-g">'
-        
+
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">'
         +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
         +           '<i class="fa fa-upload"></i>'
         +           'Upload Pictures'
         +         '</h3></a>'
         +         '<p>'
-        +           'Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.'
+        +           'Sombody has to come up with short descriptions for this main functions that our page will use.'
         +         '</p>'
         +       '</div>'
 
