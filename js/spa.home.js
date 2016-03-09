@@ -26,7 +26,7 @@ spa.home = (function (){
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">'
         +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
         +           '<i class="fa fa-search"></i>'
-        +           'Serach Pictures'
+        +           'Search Pictures'
         +         '</h3></a>'
         +         '<p>'
         +           'Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.'
