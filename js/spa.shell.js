@@ -46,7 +46,7 @@ spa.shell = (function () {
       +       '<h2 class="content-head content-head-ribbon">Discover deep image zooming</h2>'
       +       '<p>'
       +         'Click on the image to see it in a pan-and-zoom interface.'
-      +         'High-resolution scanned images reveal many historical details that aid'
+      +         ' High-resolution scanned images reveal many historical details that aid'
       +         ' historians in finding clues and correlations.  Take screenshots of close-up'
       +         'details and discover the power of Scene: History'
       +       '</p>'
