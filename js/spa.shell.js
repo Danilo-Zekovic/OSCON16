@@ -88,7 +88,7 @@ spa.shell = (function () {
 
       +       '<h4>More Information</h4>'
       +       '<p>'
-      +         'Scene: History is a joint effort of the Jasper, Pulaski and '
+      +         'Scene: History is a combined effort of the Jasper, Pulaski and '
       +         '<a target="_blank" href="http://www.white-county-history.org"> White</a> County '
       +         'Historical Societies in Indiana, and the Computer Science Department at'
       +         ' <a target="_blank" href="http://www.saintjoe.edu">Saint Joseph\'s College.<a/>'
