@@ -18,7 +18,7 @@ spa.shell = (function () {
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Upload</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
-      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Login/Sign Up</a></li>'
+      +       '<li class="pure-menu-item"><a href="#login" class="pure-menu-link">Login/Sign Up</a></li>'
       +     '</ul>'
       +   '</div>'
       + '</div>'
@@ -53,7 +53,7 @@ spa.shell = (function () {
       +     '</div>'
       +   '</div>'
 
-      + '<div class="content">'
+      + '<div id="login" class="content">'
       +   '<h2 class="content-head is-center">Sign up now.  Help us preserve historical images.</h2>'
       +   '<div class="pure-g">'
       +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
