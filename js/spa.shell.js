@@ -48,7 +48,7 @@ spa.shell = (function () {
       +         'Click on the image to see it in a pan-and-zoom interface.'
       +         ' High-resolution scanned images reveal many details that aid'
       +         ' historians in finding clues and correlations.  Take screenshots of close-up'
-      +         'details and discover the power of Scene: History'
+      +         ' details and discover the power of Scene: History'
       +       '</p>'
       +     '</div>'
       +   '</div>'
