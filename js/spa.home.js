@@ -36,10 +36,10 @@ spa.home = (function (){
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">'
         +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
         +           '<i class="fa fa-rocket"></i>'
-        +           'Account Administration'
+        +           'Account Management'
         +         '</h3></a>'
         +         '<p>'
-        +           'Administer your account, set image defaults, manage passwords and access.'
+        +           'Manage your account, set image defaults, manage passwords and access.'
         +         '</p>'
         +       '</div>'
 
