@@ -57,6 +57,7 @@ spa.shell = (function () {
       +   '<h2 class="content-head is-center">Sign up now.  Help us preserve historical images.</h2>'
       +   '<div class="pure-g">'
       +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
+      +       'Already have an account? <a href="#">Click here to login</a>'
       +       '<form class="pure-form pure-form-stacked">'
       +         '<fieldset>'
 
@@ -75,7 +76,6 @@ spa.shell = (function () {
       +           '<button type="submit" class="pure-button">Sign Up</button>'
       +         '</fieldset>'
       +       '</form>'
-      +       'Already have an account? <a href="#">Click here to login</a>'
       +     '</div>'
 
       +     '<div class="l-box-lrg pure-u-1 pure-u-md-3-5">'
