@@ -75,6 +75,7 @@ spa.shell = (function () {
       +           '<button type="submit" class="pure-button">Sign Up</button>'
       +         '</fieldset>'
       +       '</form>'
+      +       'Already have an account? <a href="#">Click here to login</a>'
       +     '</div>'
 
       +     '<div class="l-box-lrg pure-u-1 pure-u-md-3-5">'
