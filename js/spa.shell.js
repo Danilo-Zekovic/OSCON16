@@ -12,7 +12,7 @@ spa.shell = (function () {
       main_html : String()
       + '<div class="header">'
       +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
-      +     '<a class="pure-menu-heading" href="">Scene: Yesterday</a>'
+      +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
       +       '<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Upload</a></li>'
@@ -25,7 +25,7 @@ spa.shell = (function () {
 
       + '<div class="splash-container">'
       +   '<div class="splash">'
-      +     '<h1 class="splash-head">Welcome to Scene: Yesterday!</h1>'
+      +     '<h1 class="splash-head">Welcome to Scene: History!</h1>'
       +   '</div>'
       + '</div>'
 
@@ -48,7 +48,7 @@ spa.shell = (function () {
       +         'Click on the image to see it in a pan-and-zoom interface.'
       +         'High-resolution scanned images reveal many historical details that aid'
       +         ' historians in finding clues and correlations.  Take screenshots of close-up'
-      +         'details and discover the power of Scene: Yesterday'
+      +         'details and discover the power of Scene: History'
       +       '</p>'
       +     '</div>'
       +   '</div>'
@@ -88,7 +88,7 @@ spa.shell = (function () {
 
       +       '<h4>More Information</h4>'
       +       '<p>'
-      +         'Scene: Yesterday is a joint effort of the Jasper, Pulaski and '
+      +         'Scene: History is a joint effort of the Jasper, Pulaski and '
       +         '<a target="_blank" href="http://www.white-county-history.org"> White</a> County '
       +         'Historical Societies in Indiana, and the Computer Science Department at'
       +         ' <a target="_blank" href="http://www.saintjoe.edu">Saint Joseph\'s College.<a/>'
