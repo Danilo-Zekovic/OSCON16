@@ -94,7 +94,7 @@ spa.shell = (function () {
       + '</div>'
 
       + '<div class="footer l-box is-center">'
-      +   'View the source of this layout to learn more. Made with love by the YUI Team.'
+      +   'This site created and maintained by the SJC CS OSCON 2016 SPA Tutorial Team.'
       + '</div>'
 
       + '</div>'
