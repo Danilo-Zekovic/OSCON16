@@ -10,7 +10,7 @@ spa.home = (function (){
   var
     configMap = {
       main_html : String()
-        +     '<h2 class="content-head is-center">This is the main view that will change</h2>'
+        +     '<h2 class="content-head is-center">EXPLORE THE FASCINATING WORLD OF HISTORICAL IMAGES</h2>'
         +     '<div class="pure-g">'
 
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">'
@@ -49,7 +49,7 @@ spa.home = (function (){
         +           'Get Started!!'
         +         '</h3></a>'
         +         '<p>'
-        +           'Learn how to upload, tag, and manage your images using <Product Name>'
+        +           'Learn how to upload, tag, and manage your images using PRODUCT-NAME'
         +         '</p>'
         +       '</div>'
 
