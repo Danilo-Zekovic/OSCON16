@@ -43,7 +43,7 @@ spa.shell = (function () {
       +       '</a>'
       +  '</div>'
       +     '<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">'
-      +       '<h2 class="content-head content-head-ribbon">Discover deep image zooming</h2>'
+      +       '<h2 class="content-head content-head-ribbon">Discover deep zooming image views</h2>'
       +       '<p>'
       +         'Click on the image to see it in a pan-and-zoom interface.'
       +         ' High-resolution scanned images reveal many details that aid'
