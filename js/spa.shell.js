@@ -69,6 +69,9 @@ spa.shell = (function () {
       +           '<label for="password">Your Password</label>'
       +           '<input id="password" type="password" placeholder="Your Password">'
 
+      +           '<label for="password">Re-type Password</label>'
+      +           '<input id="password" type="password" placeholder="Your Password">'
+
       +           '<button type="submit" class="pure-button">Sign Up</button>'
       +         '</fieldset>'
       +       '</form>'
@@ -85,9 +88,10 @@ spa.shell = (function () {
 
       +       '<h4>More Information</h4>'
       +       '<p>'
-      +         'PRODUCT-NAME is a joint effort of the Jasper, Pulaski and White County '
+      +         'PRODUCT-NAME is a joint effort of the Jasper, Pulaski and '
+      +         '<a target="_blank" href="http://www.white-county-history.org"> White</a> County '
       +         'Historical Societies in Indiana, and the Computer Science Department at'
-      +         ' Saint Joseph\'s College, Indiana.'
+      +         ' <a target="_blank" href="http://www.saintjoe.edu">Saint Joseph\'s College.<a/>'
       +       '</p>'
       +     '</div>'
       +   '</div>'
