@@ -17,7 +17,7 @@ spa.shell = (function () {
       +       '<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Upload</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
-      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Account</a></li>'
+      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Login/Sign Up</a></li>'
       +     '</ul>'
       +   '</div>'
