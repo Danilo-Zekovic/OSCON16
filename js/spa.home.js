@@ -49,7 +49,7 @@ spa.home = (function (){
         +           'Get Started!!'
         +         '</h3></a>'
         +         '<p>'
-        +           'Learn how to upload, tag, and manage your images using PRODUCT-NAME'
+        +           'Learn how to upload, tag, and manage your images using '
         +         '</p>'
         +       '</div>'
 
