@@ -82,8 +82,8 @@ spa.shell = (function () {
       +       '<p>'
       +         'This site is maintained entirely by volunteers, and we desperately need '
       +         'as many helping hands as we can find.  If the preservation of historical '
-      +         'images is of interest to you, please contact us and let\'s talk about how '
-      +         'we might be able to work together.'
+      +         'images is of interest to you, please <a href="mailto:brianc@palaver.net">'
+      +         'contact us</a> and let\'s talk about how we can work together.'
       +       '</p>'
 
       +       '<h4>More Information</h4>'
