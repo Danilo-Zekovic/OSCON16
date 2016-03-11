@@ -14,11 +14,11 @@ spa.shell = (function () {
       +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
-      +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
-      +       '<li id="menuUp" class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
-      +       '<li id="menuBrowse" class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
-      +       '<li id="menuDash" class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
-      +       '<li id=menuLogin" class="pure-menu-item"><a href="login" class="pure-menu-link">Login/Sign Up</a></li>'
+      +       '<li class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
+      +       '<li class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
+      +       '<li class="pure-menu-item"><a href="/browse" class="pure-menu-link">Browse</a></li>'
+      +       '<li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>'
+      +       '<li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login/Sign Up</a></li>'
       +     '</ul>'
       +   '</div>'
       + '</div>'
@@ -179,13 +179,22 @@ spa.shell = (function () {
   }
 
   function upload() {
-    console.log("Reached upload: " + currentMod);
+    console.log("Reached upload");
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
       currentMod.hide();
       currentMod = jqueryMap.$upload;
       currentMod.show();
     }
+  }
+
+  function login() {
+    console.log("Reached login");
+    if( currentMod != jqueryMap.$login ) {
+      currentMod.hide();
+    }
+    currentMod = jqueryMap.$login;
+    currentMod.show();
   }
 
   // End DOM client-side router methods
@@ -206,8 +215,10 @@ spa.shell = (function () {
 
     spa.home.initModule(jqueryMap.$home);
     spa.upload.initModule(jqueryMap.$upload);
+    spa.login.initModule(jqueryMap.$login);
     jqueryMap.$home.hide();
     jqueryMap.$upload.hide();
+    jqueryMap.$login.hide();
 
     // Default content is "home" screen
     currentMod = jqueryMap.$home;
@@ -219,10 +230,8 @@ spa.shell = (function () {
     page('/upload', upload);
     //page('/browse', browse);
     //page('/dashboard', dashboard);
-    //page('/login', login);
+    page('/login', login);
     page();
-
-
 
   }; // End public method initModule
 
