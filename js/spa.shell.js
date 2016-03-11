@@ -128,7 +128,7 @@ spa.shell = (function () {
     jqueryMap = {},
 
     initModule, setJqueryMap,
-    currentMod;
+    currentMenu, currentMod;
 
   //--- end variables
 
@@ -161,17 +161,31 @@ spa.shell = (function () {
     }
     //currentMod.hide();
     currentMod = jqueryMap.$home;
+    changeSelectedMenuItem('menuHome');
     currentMod.show();
     //jqueryMap.$home.show();
+  }
+
+  function changeSelectedMenuItem(newItem) {
+    // Gotta wonder if there's not an easier way
+    // This code deselects the "current" menu selection then selects the upload one
+    //  Note: this doesn't use JQuery as per advice from StackOverflow
+    var newItem = document.getElementById(newItem);
+    if (currentMenu != newItem ) {
+      currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
+      currentMenu = newItem;
+      currentMenu.className += " pure-menu-selected";
+    }
   }
 
   function upload() {
     console.log("Reached upload");
     if( currentMod != jqueryMap.$upload ) {
+      changeSelectedMenuItem('menuUp');
       currentMod.hide();
+      currentMod = jqueryMap.$upload;
+      currentMod.show();
     }
-    currentMod = jqueryMap.$upload;
-    currentMod.show();
   }
 
   function login() {
@@ -208,6 +222,8 @@ spa.shell = (function () {
 
     // Default content is "home" screen
     currentMod = jqueryMap.$home;
+    // And default menu item is the home selectin
+    currentMenu = document.getElementById('menuHome');
 
     // Set up routes
     page('/', index);
