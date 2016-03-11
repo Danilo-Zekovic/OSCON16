@@ -14,8 +14,8 @@ spa.shell = (function () {
       +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
-      +       '<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>'
-      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Upload</a></li>'
+      +       '<li class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
+      +       '<li class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
       +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
       +       '<li class="pure-menu-item"><a href="#login" class="pure-menu-link">Login/Sign Up</a></li>'
@@ -31,9 +31,10 @@ spa.shell = (function () {
 
       + '<div class="content-wrapper">'
       +   '<div id="main" class="content">'
-      +     '<h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>'
-      +     '<div class="pure-g">'
-      +     '</div>'
+      +     '<section><div id="home-view">'
+      +     '</div></section>'
+      +     '<section><div id="upload-view">'
+      +     '</div></section>'
       +   '</div>'
 
       +   '<div class="ribbon l-box-lrg pure-g">'
@@ -129,7 +130,9 @@ spa.shell = (function () {
     // Only three regions for now
     jqueryMap = {
       $container : $container,
-      $main      : $container.find('#main')
+      $main      : $container.find('#main'),
+      $home      : $container.find('#home-view'),
+      $upload    : $container.find('#upload-view')
     };
   };
   // End DOM method /setJqueryMap
@@ -138,13 +141,22 @@ spa.shell = (function () {
 
   // Base route
   function index() {
-    if( currentMod != jqueryMap.$main ) {
+    if( currentMod != jqueryMap.$home ) {
       currentMod.hide();
     }
     //currentMod.hide();
-    currentMod = jqueryMap.$main;
+    currentMod = jqueryMap.$home;
     currentMod.show();
-    //jqueryMap.$main.show();
+    //jqueryMap.$home.show();
+  }
+
+  function upload() {
+    console.log("Reached upload: " + currentMod);
+    if( currentMod != jqueryMap.$upload ) {
+      currentMod.hide();
+    }
+    currentMod = jqueryMap.$upload;
+    currentMod.show();
   }
 
   // End DOM client-side router methods
@@ -163,14 +175,17 @@ spa.shell = (function () {
     setJqueryMap();
 
 
-    spa.home.initModule(jqueryMap.$main);
-    jqueryMap.$main.hide();
+    spa.home.initModule(jqueryMap.$home);
+    spa.upload.initModule(jqueryMap.$upload);
+    jqueryMap.$home.hide();
+    jqueryMap.$upload.hide();
 
     // Default content is "home" screen
-    currentMod = jqueryMap.$main;
+    currentMod = jqueryMap.$home;
 
     // Set up routes
     page('/', index);
+    page('/upload', upload);
     page();
 
 
