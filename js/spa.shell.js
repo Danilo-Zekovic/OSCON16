@@ -14,11 +14,11 @@ spa.shell = (function () {
       +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
-      +       '<li class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
-      +       '<li class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
-      +       '<li class="pure-menu-item"><a href="/browse" class="pure-menu-link">Browse</a></li>'
-      +       '<li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>'
-      +       '<li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login/Sign Up</a></li>'
+      +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
+      +       '<li id="menuUp" class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
+      +       '<li id="menuBrowse" class="pure-menu-item"><a href="/browse" class="pure-menu-link">Browse</a></li>'
+      +       '<li id="menuDash" class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>'
+      +       '<li id="menuLog" class="pure-menu-item"><a href="/login" class="pure-menu-link">Login/Sign Up</a></li>'
       +     '</ul>'
       +   '</div>'
       + '</div>'
@@ -191,10 +191,11 @@ spa.shell = (function () {
   function login() {
     console.log("Reached login");
     if( currentMod != jqueryMap.$login ) {
+      changeSelectedMenuItem('menuLog');
       currentMod.hide();
+      currentMod = jqueryMap.$login;
+      currentMod.show();
     }
-    currentMod = jqueryMap.$login;
-    currentMod.show();
   }
 
   // End DOM client-side router methods
