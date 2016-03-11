@@ -150,17 +150,21 @@ spa.shell = (function () {
     //jqueryMap.$home.show();
   }
 
-  function upload() {
-    console.log("Reached upload: " + currentMod);
+  function changeSelectedMenuItem(newItem) {
     // Gotta wonder if there's not an easier way
     // This code deselects the "current" menu selection then selects the upload one
     //  Note: this doesn't use JQuery as per advice from StackOverflow
-    if (currentMenu != document.getElementById('menuUp')) {
+    if (currentMenu != document.getElementById(newItem)) {
       console.log('This should do it, but it does not');
       currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
-      currentMenu = document.getElementById("menuUp");
+      currentMenu = document.getElementById(newItem);
       currentMenu.className += " pure-menu-selected";
     }
+  }
+
+  function upload() {
+    console.log("Reached upload: " + currentMod);
+    changeSelectedMenuItem('menuUp');
     if( currentMod != jqueryMap.$upload ) {
       currentMod.hide();
     }
