@@ -166,11 +166,20 @@ spa.shell = (function () {
   }
 
   function upload() {
-    console.log("Reached upload: " + currentMod);
+    console.log("Reached upload");
     if( currentMod != jqueryMap.$upload ) {
       currentMod.hide();
     }
     currentMod = jqueryMap.$upload;
+    currentMod.show();
+  }
+
+  function login() {
+    console.log("Reached login");
+    if( currentMod != jqueryMap.$login ) {
+      currentMod.hide();
+    }
+    currentMod = jqueryMap.$login;
     currentMod.show();
   }
 
@@ -192,8 +201,10 @@ spa.shell = (function () {
 
     spa.home.initModule(jqueryMap.$home);
     spa.upload.initModule(jqueryMap.$upload);
+    spa.login.initModule(jqueryMap.$login);
     jqueryMap.$home.hide();
     jqueryMap.$upload.hide();
+    jqueryMap.$login.hide();
 
     // Default content is "home" screen
     currentMod = jqueryMap.$home;
@@ -203,7 +214,7 @@ spa.shell = (function () {
     page('/upload', upload);
     //page('/browse', browse);
     //page('/dashboard', dashboard);
-    //page('/login', login);
+    page('/login', login);
     page();
 
 
