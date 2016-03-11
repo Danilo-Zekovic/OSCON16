@@ -217,6 +217,13 @@ spa.shell = (function () {
     page('/login', login);
     page();
 
+    // event handlers
+    $(".pure-menu-item").click(function(){
+      $( ".pure-menu-item" ).each(function( index ) {
+        $(this).removeClass("pure-menu-selected");
+      });
+      $(this).toggleClass("pure-menu-selected");
+    });
 
 
   }; // End public method initModule
