@@ -157,7 +157,6 @@ spa.shell = (function () {
     //  Note: this doesn't use JQuery as per advice from StackOverflow
     var newItem = document.getElementById(newItem);
     if (currentMenu != newItem ) {
-      console.log('This should do it, but it does not');
       currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
       currentMenu = newItem;
       currentMenu.className += " pure-menu-selected";
