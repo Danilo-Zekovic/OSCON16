@@ -26,6 +26,9 @@ configRoutes = function ( router, server ) {
     res.sendFile('index.html', options);
   });
 
+  router.get('/login', function(req, res) {
+    res.sendFile('index.html', options);
+  });
 };
 
 module.exports = { configRoutes : configRoutes };
