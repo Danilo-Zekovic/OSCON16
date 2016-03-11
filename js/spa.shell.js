@@ -38,7 +38,7 @@ spa.shell = (function () {
       +     '<section><div id="upload-view">'
       +     '</div></section>'
 
-      +     '<section><div id="browes-view">'
+      +     '<section><div id="browse-view">'
       +     '</div></section>'
 
       +     '<section><div id="dashboard-view">'
@@ -67,49 +67,6 @@ spa.shell = (function () {
       +   '</div>'
 
       + '<div id="login" class="content">'
-      +   '<h2 class="content-head is-center">Sign up now.  Help us preserve historical images.</h2>'
-      +   '<div class="pure-g">'
-      +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
-      +       'Already have an account? <a href="#">Click here to login</a>'
-      +       '<form class="pure-form pure-form-stacked">'
-      +         '<fieldset>'
-
-      +           '<label for="name">Your Name</label>'
-      +           '<input id="name" type="text" placeholder="Your Name">'
-
-      +           '<label for="email">Your Email</label>'
-      +           '<input id="email" type="email" placeholder="Your Email">'
-
-      +           '<label for="password">Your Password</label>'
-      +           '<input id="password" type="password" placeholder="Your Password">'
-
-      +           '<label for="password">Re-type Password</label>'
-      +           '<input id="password" type="password" placeholder="Your Password">'
-
-      +           '<button type="submit" class="pure-button">Sign Up</button>'
-      +         '</fieldset>'
-      +       '</form>'
-      +     '</div>'
-
-      +     '<div class="l-box-lrg pure-u-1 pure-u-md-3-5">'
-      +       '<h4>Contact Us</h4>'
-      +       '<p>'
-      +         'This site is maintained entirely by volunteers, and we desperately need '
-      +         'as many helping hands as we can find.  If the preservation of historical '
-      +         'images is of interest to you, please <a href="mailto:brianc@palaver.net">'
-      +         'contact us</a> and let\'s talk about how we can work together.'
-      +       '</p>'
-
-      +       '<h4>More Information</h4>'
-      +       '<p>'
-      +         'Scene: History is a combined effort of the Jasper, Pulaski and '
-      +         '<a target="_blank" href="http://www.white-county-history.org"> White</a> County '
-      +         'Historical Societies in Indiana, and the Computer Science Department at'
-      +         ' <a target="_blank" href="http://www.saintjoe.edu">Saint Joseph\'s College.<a/>'
-      +       '</p>'
-      +     '</div>'
-      +   '</div>'
-
       + '</div>'
 
       + '<div class="footer l-box is-center">'
@@ -139,15 +96,16 @@ spa.shell = (function () {
   setJqueryMap = function () {
     var $container = stateMap.$container;
 
-    // Only three regions for now
+    // Set
     jqueryMap = {
       $container : $container,
       $main      : $container.find('#main'),
       $home      : $container.find('#home-view'),
       $upload    : $container.find('#upload-view'),
-      $browse    : $container.find('#browes-view'),
+      $browse    : $container.find('#browse-view'),
       $dashboard : $container.find('#dashboard-view'),
-      $login     : $container.find('#login-view')
+      $login     : $container.find('#login-view'),
+      $splashLog : $container.find('#login')
     };
   };
   // End DOM method /setJqueryMap
@@ -163,6 +121,8 @@ spa.shell = (function () {
     currentMod = jqueryMap.$home;
     changeSelectedMenuItem('menuHome');
     currentMod.show();
+    // Show login information again on footer
+    jqueryMap.$splashLog.show();
     //jqueryMap.$home.show();
   }
 
@@ -185,6 +145,7 @@ spa.shell = (function () {
       currentMod.hide();
       currentMod = jqueryMap.$upload;
       currentMod.show();
+      jqueryMap.$main.show();
     }
   }
 
@@ -192,7 +153,10 @@ spa.shell = (function () {
     console.log("Reached login");
     if( currentMod != jqueryMap.$login ) {
       changeSelectedMenuItem('menuLog');
+      // Hide current main content
       currentMod.hide();
+      // In this case we also have to hide the "#login" div
+      jqueryMap.$splashLog.hide();
       currentMod = jqueryMap.$login;
       currentMod.show();
     }
@@ -216,7 +180,11 @@ spa.shell = (function () {
 
     spa.home.initModule(jqueryMap.$home);
     spa.upload.initModule(jqueryMap.$upload);
+
+    // Set up content for both #login and #login-view divs
     spa.login.initModule(jqueryMap.$login);
+    spa.login.initModule(jqueryMap.$splashLog);
+
     jqueryMap.$home.hide();
     jqueryMap.$upload.hide();
     jqueryMap.$login.hide();

@@ -10,7 +10,6 @@ spa.login = (function (){
   var
     configMap = {
       main_html : String()
-      + '<div id="login" class="content">'
       +   '<h2 class="content-head is-center">Sign up now.  Help us preserve historical images.</h2>'
       +   '<div class="pure-g">'
       +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
@@ -54,7 +53,6 @@ spa.login = (function (){
       +     '</div>'
       +   '</div>'
 
-      + '</div>'
     },
 
     stateMap = {
