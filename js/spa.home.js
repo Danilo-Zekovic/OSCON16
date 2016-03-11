@@ -14,7 +14,7 @@ spa.home = (function (){
         +     '<div class="pure-g">'
 
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">'
-        +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
+        +         '<a href="/upload" class="pure-menu-link"><h3 class="content-subhead">'
         +           '<i class="fa fa-upload"></i>'
         +           'Upload Images'
         +         '</h3></a>'
