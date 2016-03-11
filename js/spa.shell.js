@@ -14,11 +14,11 @@ spa.shell = (function () {
       +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
-      +       '<li class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
-      +       '<li class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
-      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
-      +       '<li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
-      +       '<li class="pure-menu-item"><a href="#login" class="pure-menu-link">Login/Sign Up</a></li>'
+      +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
+      +       '<li id="menuUp" class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
+      +       '<li id="menuBrowse" class="pure-menu-item"><a href="#" class="pure-menu-link">Browse</a></li>'
+      +       '<li id="menuDash" class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>'
+      +       '<li id=menuLogin" class="pure-menu-item"><a href="#login" class="pure-menu-link">Login/Sign Up</a></li>'
       +     '</ul>'
       +   '</div>'
       + '</div>'
@@ -116,7 +116,7 @@ spa.shell = (function () {
     jqueryMap = {},
 
     initModule, setJqueryMap,
-    currentMod;
+    currentMenu, currentMod;
 
   //--- end variables
 
@@ -152,6 +152,12 @@ spa.shell = (function () {
 
   function upload() {
     console.log("Reached upload: " + currentMod);
+    if (currentMenu != document.getElementById('menuUp')) {
+      console.log('This should do it, but it does not');
+      currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
+      currentMenu = document.getElementById("menuUp");
+      currentMenu.className += " pure-menu-selected";
+    }
     if( currentMod != jqueryMap.$upload ) {
       currentMod.hide();
     }
@@ -182,6 +188,8 @@ spa.shell = (function () {
 
     // Default content is "home" screen
     currentMod = jqueryMap.$home;
+    // And default menu item is the home selectin
+    currentMenu = document.getElementById('menuHome');
 
     // Set up routes
     page('/', index);
