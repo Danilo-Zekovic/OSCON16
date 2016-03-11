@@ -23,7 +23,7 @@ spa.shell = (function () {
       +   '</div>'
       + '</div>'
 
-      + '<div class="splash-container">'
+      + '<div id="splash" class="splash-container">'
       +   '<div class="splash">'
       +     '<h1 class="splash-head">Welcome to Scene: History!</h1>'
       +   '</div>'
@@ -99,6 +99,7 @@ spa.shell = (function () {
     // Set
     jqueryMap = {
       $container : $container,
+      $splash    : $container.find('#splash'),
       $main      : $container.find('#main'),
       $home      : $container.find('#home-view'),
       $upload    : $container.find('#upload-view'),
@@ -109,6 +110,19 @@ spa.shell = (function () {
     };
   };
   // End DOM method /setJqueryMap
+
+  // DOM method changeSelectedMenuItem
+  function changeSelectedMenuItem(newItem) {
+    // Gotta wonder if there's not an easier way
+    // This code deselects the "current" menu selection then selects the upload one
+    //  Note: this doesn't use JQuery as per advice from StackOverflow
+    var newItem = document.getElementById(newItem);
+    if (currentMenu != newItem ) {
+      currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
+      currentMenu = newItem;
+      currentMenu.className += " pure-menu-selected";
+    }
+  }
 
   // Begin client-side router methods
 
@@ -124,18 +138,6 @@ spa.shell = (function () {
     // Show login information again on footer
     jqueryMap.$splashLog.show();
     //jqueryMap.$home.show();
-  }
-
-  function changeSelectedMenuItem(newItem) {
-    // Gotta wonder if there's not an easier way
-    // This code deselects the "current" menu selection then selects the upload one
-    //  Note: this doesn't use JQuery as per advice from StackOverflow
-    var newItem = document.getElementById(newItem);
-    if (currentMenu != newItem ) {
-      currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
-      currentMenu = newItem;
-      currentMenu.className += " pure-menu-selected";
-    }
   }
 
   function upload() {
