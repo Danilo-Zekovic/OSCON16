@@ -152,6 +152,9 @@ spa.shell = (function () {
 
   function upload() {
     console.log("Reached upload: " + currentMod);
+    // Gotta wonder if there's not an easier way
+    // This code deselects the "current" menu selection then selects the upload one
+    //  Note: this doesn't use JQuery as per advice from StackOverflow
     if (currentMenu != document.getElementById('menuUp')) {
       console.log('This should do it, but it does not');
       currentMenu.className = currentMenu.className.replace(' pure-menu-selected', '');
