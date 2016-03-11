@@ -146,6 +146,7 @@ spa.shell = (function () {
     }
     //currentMod.hide();
     currentMod = jqueryMap.$home;
+    changeSelectedMenuItem('menuHome');
     currentMod.show();
     //jqueryMap.$home.show();
   }
