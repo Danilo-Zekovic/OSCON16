@@ -31,22 +31,10 @@ spa.shell = (function () {
 
       + '<div class="content-wrapper">'
       +   '<div id="main" class="content">'
-
       +     '<section><div id="home-view">'
       +     '</div></section>'
-
       +     '<section><div id="upload-view">'
       +     '</div></section>'
-
-      +     '<section><div id="browes-view">'
-      +     '</div></section>'
-
-      +     '<section><div id="dashboard-view">'
-      +     '</div></section>'
-
-      +     '<section><div id="login-view">'
-      +     '</div></section>'
-
       +   '</div>'
 
       +   '<div class="ribbon l-box-lrg pure-g">'
@@ -144,10 +132,7 @@ spa.shell = (function () {
       $container : $container,
       $main      : $container.find('#main'),
       $home      : $container.find('#home-view'),
-      $upload    : $container.find('#upload-view'),
-      $browse    : $container.find('#browes-view'),
-      $dashboard : $container.find('#dashboard-view'),
-      $login     : $container.find('#login-view')
+      $upload    : $container.find('#upload-view')
     };
   };
   // End DOM method /setJqueryMap
@@ -217,9 +202,6 @@ spa.shell = (function () {
     // Set up routes
     page('/', index);
     page('/upload', upload);
-    //page('/browse', browse);
-    //page('/dashboard', dashboard);
-    //page('/login', login);
     page();
 
 
