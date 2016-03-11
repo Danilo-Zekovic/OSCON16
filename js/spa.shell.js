@@ -165,12 +165,12 @@ spa.shell = (function () {
 
   function upload() {
     console.log("Reached upload: " + currentMod);
-    changeSelectedMenuItem('menuUp');
     if( currentMod != jqueryMap.$upload ) {
+      changeSelectedMenuItem('menuUp');
       currentMod.hide();
+      currentMod = jqueryMap.$upload;
+      currentMod.show();
     }
-    currentMod = jqueryMap.$upload;
-    currentMod.show();
   }
 
   // End DOM client-side router methods
