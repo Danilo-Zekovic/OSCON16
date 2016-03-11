@@ -10,38 +10,25 @@ spa.upload = (function (){
   var
     configMap = {
       main_html : String()
-        +     '<h2 class="content-head is-center">EXPLORE THE FASCINATING WORLD OF HISTORICAL IMAGES</h2>'
+        +     '<h2 class="content-head is-center">UPLOAD YOUR IMAGES</h2>'
         +     '<div class="pure-g">'
 
-        +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">'
-        +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
-        +           '<i class="fa fa-upload"></i>'
-        +           'Upload Images'
-        +         '</h3></a>'
-        +         '<p>'
-        +           'Upload images, add related information, set visibility, convert for viewing'
-        +         '</p>'
-        +       '</div>'
+        +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
+        +       '<p>Description what user is suposed to do here</p>'
+        +       '<form class="pure-form pure-form-stacked">'
+        +         '<fieldset>'
 
-        +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">'
-        +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
-        +           '<i class="fa fa-search"></i>'
-        +           'Browse The Collection'
-        +         '</h3></a>'
-        +         '<p>'
-        +           'Search images by title, location, tags, and subject.  View with pan and zoom.  Download.'
-        +         '</p>'
-        +       '</div>'
+        +           '<label for="name">Your Name</label>'
+        +           '<input id="name" type="text" placeholder="Your Name">'
 
-        +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">'
-        +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
-        +           '<i class="fa fa-rocket"></i>'
-        +           'Account Management'
-        +         '</h3></a>'
-        +         '<p>'
-        +           'Manage your account, set image defaults, manage passwords and access.'
-        +         '</p>'
-        +       '</div>'
+        +           '<label for="time">When was it taken</label>'
+        +           '<input id="time" type="text" placeholder="Time">'
+
+        +           '<label for="location">Where was the picture taken</label>'
+        +           '<input id="location" type="text" placeholder="Location?">'
+
+        +           '<button type="submit" class="pure-button">Upload</button>'
+        +         '</fieldset>'
 
         +     '</div>'
     },
