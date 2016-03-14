@@ -11,7 +11,7 @@ spa.shell = (function () {
     configMap = {
       main_html : String()
       + '<div class="header">'
-      +   '<div class="home-menu pure-menu pure-menu-fixed pure-menu-horizontal">'
+      +   '<div class="home-menu pure-menu pure-menu-fixed pure-menu-horizontal pure-menu-scrollable">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
       +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
