@@ -143,7 +143,7 @@ a.pure-button-primary {
     position: fixed !important;
 }
 
-.splash .pure-img-responsive {
+.splash {
     /* absolute center .splash within .splash-container */
     width: 80%;
     height: 50%;
