@@ -11,7 +11,7 @@ spa.shell = (function () {
     configMap = {
       main_html : String()
       + '<div class="header">'
-      +   '<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">'
+      +   '<div class="home-menu pure-menu pure-menu-fixed pure-menu-horizontal">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
       +     '<ul class="pure-menu-list">'
       +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
@@ -145,6 +145,12 @@ spa.shell = (function () {
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
       currentMod.hide();
+      // I want to hide the splash screen - here's stuff that doesn't work
+      // jqueryMap.$splash.hide();
+      // console.log(jqueryMap.$splash.hasClass('splash'));
+      // console.log(jqueryMap.$splash.hasClass('splash-container'));
+      // jqueryMap.$splash.removeClass('splash-container');
+      // console.log(jqueryMap.$splash.hasClass('splash-container'));
       currentMod = jqueryMap.$upload;
       currentMod.show();
       jqueryMap.$main.show();
