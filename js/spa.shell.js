@@ -128,6 +128,7 @@ spa.shell = (function () {
 
   // Base route
   function index() {
+
     if( currentMod != jqueryMap.$home ) {
       currentMod.hide();
     }
@@ -138,9 +139,11 @@ spa.shell = (function () {
     // Show login information again on footer
     jqueryMap.$splashLog.show();
     //jqueryMap.$home.show();
+    splashToggle();
   }
 
   function upload() {
+
     console.log("Reached upload");
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
@@ -154,10 +157,12 @@ spa.shell = (function () {
       currentMod = jqueryMap.$upload;
       currentMod.show();
       jqueryMap.$main.show();
+      splashToggle();
     }
   }
 
   function login() {
+
     console.log("Reached login");
     if( currentMod != jqueryMap.$login ) {
       changeSelectedMenuItem('menuLog');
@@ -167,10 +172,21 @@ spa.shell = (function () {
       jqueryMap.$splashLog.hide();
       currentMod = jqueryMap.$login;
       currentMod.show();
+      splashToggle();
     }
   }
 
   // End DOM client-side router methods
+
+  function splashToggle(){
+
+    if (currentMod != jqueryMap.$home ){
+      $(".content-wrapper").animate({top : '8%'});
+    }else{
+      $(".content-wrapper").animate({top : '87%'});
+    }
+
+  }
 
   // -- end DOM-oriented methods //
 
