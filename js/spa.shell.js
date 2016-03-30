@@ -13,7 +13,7 @@ spa.shell = (function () {
       + '<div class="header" >'
       +   '<div class="home-menu pure-menu pure-menu-fixed pure-menu-horizontal pure-menu-scrollable custom-menu-3 custom-can-transform" id="menu">'
       +     '<a class="pure-menu-heading" href="">Scene: History</a>'
-      +     '<a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>'
+    //  +     '<a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>'
       +     '<ul class="pure-menu-list topnav">'
       +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
       +       '<li id="menuUp" class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
@@ -21,22 +21,11 @@ spa.shell = (function () {
       +       '<li id="menuDash" class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>'
       +       '<li id="menuLog" class="pure-menu-item"><a href="/login" class="pure-menu-link">Login/Sign Up</a></li>'
       +       '<li class="icon" id="threeL">'
-      +         '<a href="javascript:void(0);">&#9776;</a>'
+      +         '<a href="javascript:void(0);"><i class="fa fa-bars"></i></a>'
       +       '</li>'
       +     '</ul>'
       +   '</div>'
       + '</div>'
-/*+      '<ul class="topnav">'
-+        '<li><a href="#home">Home</a></li>'
-+        '<li><a href="#news">News</a></li>'
-+        '<li><a href="#contact">Contact</a></li>'
-+        '<li><a href="#about">About</a></li>'
-+        '<li class="icon" id="threeL">'
-+          '<a href="javascript:void(0);">&#9776;</a>'
-+        '</li>'
-+      '</ul>'*/
-
-
 
       + '<div id="splash" class="splash-container">'
       +   '<div class="splash">'
