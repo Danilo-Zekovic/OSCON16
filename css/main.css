@@ -6,6 +6,7 @@
 
 @import "layouts/marketing-old-ie.css";
 @import "layouts/marketing.css";
+@import "menuToggle.css";
 
 .splash-container {
   background-image: url("img/background.png");
