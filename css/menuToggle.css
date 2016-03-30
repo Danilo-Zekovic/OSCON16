@@ -31,11 +31,12 @@ ul.topnav li.icon {display: none;}
   ul.topnav li.icon {
     float: right;
     display: inline-block;
+    color: white;
   }
 
   ul.topnav li a {
     padding: 14px 16px;
-  }  
+  }
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
