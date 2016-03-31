@@ -74,7 +74,8 @@ spa.shell = (function () {
       + '</div>'
 
       + '<div class="footer l-box is-center">'
-      +   'This site created and maintained by the SJC CS OSCON 2016 SPA Tutorial Team.'
+      +   'This site created and maintained by the SJC CS OSCON 2016 SPA Tutorial Team. <br>'
+      +   '<i class="fa fa-github"></i> <a href="https://github.com/Danilo-Zekovic/oscon16" target="_blank">oscon16</a>'
       + '</div>'
 
       + '</div>'
