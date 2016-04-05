@@ -1,6 +1,8 @@
-// Get our "initial" function to boot up with
-import initModule from './js/spa';
+// At this point, the spa.* modules are already defined
 var React = require('react');
+
+// Constructing this next statement followed an epihany:
+//  Only after the spa code has loaded--is React in scope
 console.log('Im not afraid now, so much: '+ React);
 
 // Note we're keeping jQuery (for now) as seen by the '$'
