@@ -5,8 +5,8 @@ To install and run:
 
 1. Inside the OSCON16 dir run: `npm install`  
 
-2. To start server: `node app.js`
-or `forever --uid <something> start app.js`
+2. To start server: `npm start`
+or `forever start --uid 'oscon' -c "npm start" .`
 
 3. Open your browser and go to localhost:5000        
 
