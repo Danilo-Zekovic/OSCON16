@@ -1,8 +1,8 @@
-// At this point, the spa.* modules are already defined
+// Stage One: All the spa.* files have been parsed
 var React = require('react');
 
-// Constructing this next statement followed an epihany:
+// Now their API is available to React components
 console.log('Im not afraid now, so much: '+ React);
 
-// Note we're keeping jQuery (for now) as seen by the '$'
+// Pre-conversion!!  This is still based on jQuery
 spa.initModule($('#spa'));
