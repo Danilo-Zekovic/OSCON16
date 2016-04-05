@@ -45,6 +45,7 @@ spa.upload = (function (){
     // var React = require('react');
     // var Router = require('react-router');
 
+// This code is going to help me bootstrap the Reactification of the SPA
 /*
     var ProductCategoryRow = React.createClass({
       render: function() {
