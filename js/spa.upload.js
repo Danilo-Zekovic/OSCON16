@@ -75,7 +75,7 @@ spa.upload = (function (){
 
   var ProductRow = React.createClass({
     render: function() {
-      var name = this.props.product.stocked ?
+      var name = this.props.product.restricted ?
         this.props.product.name :
         <span style={{color: 'red'}}>
           {this.props.product.name}
@@ -83,7 +83,7 @@ spa.upload = (function (){
       return (
         <tr>
           <td>{name}</td>
-          <td>{this.props.product.price}</td>
+          <td>{this.props.product.Circa}</td>
         </tr>
       );
     }
@@ -105,7 +105,7 @@ spa.upload = (function (){
           <thead>
             <tr>
               <th>Name</th>
-              <th>Price</th>
+              <th>Circa</th>
             </tr>
           </thead>
           <tbody>{rows}</tbody>
@@ -122,7 +122,7 @@ spa.upload = (function (){
           <p>
             <input type="checkbox" />
             {' '}
-            Only show products in stock
+            Only show public images
           </p>
         </form>
       );
@@ -142,12 +142,12 @@ spa.upload = (function (){
 
 
   var PRODUCTS = [
-    {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-    {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-    {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-    {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-    {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-    {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+    {category: 'RPPC Postcards', Circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
+    {category: 'RPPC Postcards', Circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
+    {category: 'RPPC Postcards', Circa: '1914', restricted: false, name: 'HannaWest.png'},
+    {category: 'Family Photos B/W', Circa: '1936', restricted: true, name: 'JAWilliams2.tif'},
+    {category: 'Family Photos B/W', Circa: '1922', restricted: false, name: 'Dawson1922.png'},
+    {category: 'Family Photos B/W', Circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
   ];
   ReactDOM.render(
     <FilterableProductTable products={PRODUCTS} />,
