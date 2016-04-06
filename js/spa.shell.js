@@ -173,7 +173,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // End DOM client-side router methods
-
+  
   // -- end DOM-oriented methods //
 
   // -- Public API methods
