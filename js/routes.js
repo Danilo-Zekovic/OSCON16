@@ -11,20 +11,17 @@ var
 
 // --- Public API
 
-configRoutes = function ( router, server ) {
+configRoutes = function ( router, server, path ) {
 
-  // Serve files from html sibling directory
-  // 4/6/16: Which no longer exists
   var options = {
-  root: __dirname
-  };
+    root: __dirname + '/../'
+   };
 
   router.get('/', function(req, res) {
     res.sendFile('index.html', options);
   });
 
   router.get('/upload', function(req, res) {
-    console.log('handling upload route');
     res.sendFile('index.html', options);
   });
 
