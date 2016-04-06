@@ -4,10 +4,8 @@
  * Main shell, basic structure of the app
 */
 
-spa.shell = (function () {
-  'use strict';
-  // ------------> "Local" variables
-  var
+
+  let
     configMap = {
       main_html : String()
       + '<div class="header" >'
@@ -88,8 +86,7 @@ spa.shell = (function () {
     },
 
     jqueryMap = {},
-
-    initModule, setJqueryMap,
+    
     currentMenu, currentMod;
 
   //--- end variables
@@ -98,7 +95,7 @@ spa.shell = (function () {
   //--- Methods interacting with the DOM/jQuery
 
   // Begin DOM method /setJqueryMap
-  setJqueryMap = function () {
+  let setJqueryMap = function () {
     var $container = stateMap.$container;
 
     // Set
@@ -117,7 +114,7 @@ spa.shell = (function () {
   // End DOM method /setJqueryMap
 
   // DOM method changeSelectedMenuItem
-  function changeSelectedMenuItem(newItem) {
+let changeSelectedMenuItem = function(newItem) {
     // Gotta wonder if there's not an easier way
     // This code deselects the "current" menu selection then selects the upload one
     //  Note: this doesn't use JQuery as per advice from StackOverflow
@@ -132,7 +129,7 @@ spa.shell = (function () {
   // Begin client-side router methods
 
   // Base route
-  function index() {
+  let index = function () {
     if( currentMod != jqueryMap.$home ) {
       currentMod.hide();
     }
@@ -145,7 +142,7 @@ spa.shell = (function () {
     //jqueryMap.$home.show();
   }
 
-  function upload() {
+  let upload = function() {
     console.log("Reached upload");
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
@@ -162,7 +159,7 @@ spa.shell = (function () {
     }
   }
 
-  function login() {
+  let login = function () {
     console.log("Reached login");
     if( currentMod != jqueryMap.$login ) {
       changeSelectedMenuItem('menuLog');
@@ -182,12 +179,12 @@ spa.shell = (function () {
   // -- Public API methods
 
   /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-  function myFunction() {
+  let myFunction = function() {
       document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
   }
 
   // Begin Public method /initModule
-  initModule = function ( $container ) {
+  export default function ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
     $container.html( configMap.main_html );
@@ -223,9 +220,4 @@ spa.shell = (function () {
     // event hendling
     document.getElementById("threeL").addEventListener("click", myFunction);
 
-  }; // End public method initModule
-
-  // Post API reference property
-  return { initModule : initModule };
-  //--- end methods exposed to public
-}());
+  } // End public method initModule

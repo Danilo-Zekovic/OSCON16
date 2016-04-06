@@ -6,6 +6,7 @@
 
 spa.upload = (function (){
   'use strict';
+  let React = require('react');
   // begin local variables
   var
     configMap = {
@@ -147,6 +148,7 @@ ReactDOM.render(
     initModule = function ( $container ) {
 
       console.log("upload page reached");
+      console.log('Wondering about react: ' + React);
       //set to taste
       //serverURL = 'http://localhost:4000';
 

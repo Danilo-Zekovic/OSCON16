@@ -1,9 +1,11 @@
-// Stage One: All the spa.* files have been parsed
-// Mix in React
+// Stage One: Mix in React
 var React = require('react');
 
-// Stage Two: The old API is available, and React is in scope
-console.log('Im not afraid now, so much: ' + React);
+// Stage Two: Get our custom modules
+import spaInitModule from './js/spa';
+import './js/spa.home';
+import './js/spa.upload';
+import './js/spa.login';
 
-// Stage Three: Launch! (At present, classic spa.shell takes over)
-spa.initModule($('#spa'));
+// Stage Three: Launch! (Presently, a hybrid)
+spaInitModule($('#spa'));

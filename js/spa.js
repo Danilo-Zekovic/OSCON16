@@ -4,11 +4,12 @@
  * OSCON 2016
 */
 
-var spa = (function () {
-  'use strict';
-  var initModule = function ( $container ) {
-    // Start the shell
-    spa.shell.initModule( $container );
-  };
-  return { initModule: initModule };
-}());
+
+  // Start the shell
+
+  import initModule from './spa.shell';
+
+  export default function ($container, shellInit) {
+    console.log('We got into spa');
+    initModule( $container );
+  }
