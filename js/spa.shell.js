@@ -187,12 +187,14 @@ let changeSelectedMenuItem = function(newItem) {
   export default function initModule ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
+
+    // Needed
     $container.html( configMap.main_html );
 
     // Keep track of our elements
     setJqueryMap();
 
-
+    // All of this will fall under a controller
     spa.home.initModule(jqueryMap.$home);
     spa.upload.initModule(jqueryMap.$upload);
 
@@ -200,6 +202,7 @@ let changeSelectedMenuItem = function(newItem) {
     spa.login.initModule(jqueryMap.$login);
     spa.login.initModule(jqueryMap.$splashLog);
 
+    // See http://stackoverflow.com/questions/22061595/how-to-show-hide-reactjs-components
     jqueryMap.$home.hide();
     jqueryMap.$upload.hide();
     jqueryMap.$login.hide();
