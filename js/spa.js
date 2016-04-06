@@ -8,7 +8,7 @@
   // Start the shell
   import initModule from './spa.shell';
 
-  export default function ($container, shellInit) {
+  export default function ( $container ) {
     console.log('We got into spa');
     initModule( $container );
   }
