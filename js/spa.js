@@ -6,7 +6,6 @@
 
 
   // Start the shell
-
   import initModule from './spa.shell';
 
   export default function ($container, shellInit) {

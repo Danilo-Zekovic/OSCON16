@@ -4,9 +4,9 @@
  * Main shell, basic structure of the app
 */
 
+/* Modified to ES6 and no longer a self-executing function */
 
-  let
-    configMap = {
+  let configMap = {
       main_html : String()
       + '<div class="header" >'
       +   '<div class="home-menu pure-menu pure-menu-fixed pure-menu-horizontal pure-menu-scrollable custom-menu-3 custom-can-transform" id="menu">'
@@ -86,7 +86,7 @@
     },
 
     jqueryMap = {},
-    
+
     currentMenu, currentMod;
 
   //--- end variables
@@ -184,7 +184,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // Begin Public method /initModule
-  export default function ( $container ) {
+  export default function initModule ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
     $container.html( configMap.main_html );

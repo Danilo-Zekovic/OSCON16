@@ -1,11 +1,13 @@
 // Stage One: Mix in React
+// (This may not be necssary; modules are now webpackable)
 var React = require('react');
 
-// Stage Two: Get our custom modules
+// Stage Two: Get our custom "classic SPA" modules
+// (N.B. Dots in identifiers are problematical in ES6)
 import spaInitModule from './js/spa';
 import './js/spa.home';
 import './js/spa.upload';
 import './js/spa.login';
 
-// Stage Three: Launch! (Presently, a hybrid)
+// Stage Three: Launch! (Presently, a hybrid of old and new techniques)
 spaInitModule($('#spa'));
