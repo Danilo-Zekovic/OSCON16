@@ -15,7 +15,7 @@ configRoutes = function ( router, server ) {
 
   // Serve files from html sibling directory
   var options = {
-    root: __dirname + '/../html/'
+    root: __dirname + '/html/'
     };
 
   router.get('/', function(req, res) {
