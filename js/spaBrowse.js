@@ -6,7 +6,6 @@
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');
-  let DropZoneComponent = require('react-dropzone-component');
 
   // begin local variables
   let
@@ -186,9 +185,6 @@
         <div>
           <SearchBar />
           <ImageTable images={this.props.images} />
-          <DropZoneComponent  config={componentConfig}
-                              eventHandlers={eventHandlers}
-                              djsConfig={djsConfig} />
         </div>
       );
     }
@@ -204,10 +200,8 @@
     {category: 'Family Photos B/W', circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
   ];
   ReactDOM.render(
-    <DropZoneComponent  config={componentConfig}
-                        eventHandlers={eventHandlers}
-                        djsConfig={djsConfig} />,
-    document.getElementById('upload-view')
+    <FilterableImageTable images={IMAGES} />,
+    document.getElementById('browse-view')
   );
       // $container.html( configMap.main_html ).show();
       setJqueryMap();

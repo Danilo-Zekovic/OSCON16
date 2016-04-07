@@ -23,7 +23,7 @@
         +       '</div>'
 
         +       '<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">'
-        +         '<a href="#" class="pure-menu-link"><h3 class="content-subhead">'
+        +         '<a href="/browse" class="pure-menu-link"><h3 class="content-subhead">'
         +           '<i class="fa fa-search"></i>'
         +           'Browse The Collection'
         +         '</h3></a>'
