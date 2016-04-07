@@ -10,7 +10,17 @@ var
   http = require('http'),
   express = require('express'),
   multer = require('multer'),
-  upload = multer({ dest: 'uploads/' }),
+  cb = require('cb'),
+  storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+    },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname + '-' + Date.now())
+    }
+  }),
+  // upload = multer({ dest: 'uploads/' }),
+  storage = multer( {storage: storage }),
   bodyParser = require('body-parser'),
 
   // Will be removed "soon"
@@ -52,7 +62,7 @@ var
       res.sendFile('index.html', options);
     });
 
-    app.post('/uploadHandler', upload.single('file'), function (req, res, next) {
+    app.post('/uploadHandler', storage.single('file'), function (req, res, next) {
       console.log('How happy are you at the moment?' + JSON.stringify(req.file));
       res.sendStatus(200);
       // req.body will hold the text fields, if there were any
