@@ -11,12 +11,11 @@ var
 
 // --- Public API
 
-configRoutes = function ( router, server ) {
+configRoutes = function ( router, server, path ) {
 
-  // Serve files from html sibling directory
   var options = {
-    root: __dirname + './html/'
-    };
+    root: __dirname + '/../'
+   };
 
   router.get('/', function(req, res) {
     res.sendFile('index.html', options);

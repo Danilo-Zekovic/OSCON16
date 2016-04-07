@@ -4,11 +4,12 @@
  * OSCON 2016
 */
 
-var spa = (function () {
-  'use strict';
-  var initModule = function ( $container ) {
+
+  // This is paired with a new ES6 "export default" in the shell's code
+  import initModule from './spa.shell';
+
+  export default function ( $container ) {
+    console.log('We got into spa');
     // Start the shell
-    spa.shell.initModule( $container );
-  };
-  return { initModule: initModule };
-}());
+    initModule( $container );
+  }

@@ -1,9 +1,16 @@
-// Stage One: All the spa.* files have been parsed
-// Mix in React
+// Stage One: Mix in React
+// (This may not be necssary; modules are now webpackable)
 var React = require('react');
 
-// Stage Two: The old API is available, and React is in scope
-console.log('Im not afraid now, so much: ' + React);
+// Stage Two: Get our custom "classic SPA" modules
+// (N.B. Dots in identifiers are problematical in ES6)
+// Also note that the shell isn't loaded here; it's loaded inside spa.js
+import spaInitModule from './js/spa';
 
-// Stage Three: Launch! (At present, classic spa.shell takes over)
-spa.initModule($('#spa'));
+// I can't explain why these work OK; a mystery for my next session
+import './js/spa.home';
+import './js/spa.upload';
+import './js/spa.login';
+
+// Stage Three: Launch! (Presently, a hybrid of old and new techniques)
+spaInitModule($('#spa'));
