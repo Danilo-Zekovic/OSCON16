@@ -60,6 +60,8 @@ spa.upload = (function (){
       addRemoveLinks: true,
       acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
     },
+
+    // Legacy code
     configMap = {
       main_html : String()
         +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'

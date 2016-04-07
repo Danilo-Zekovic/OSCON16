@@ -9,9 +9,12 @@
 var
   http = require('http'),
   express = require('express'),
-  // multer = require('multer'),
+  multer = require('multer'),
+  upload = multer({ dest: 'uploads/' }),
   bodyParser = require('body-parser'),
-  MulterImpl  = require('./js/multerImpl'),
+
+  // Will be removed "soon"
+  // MulterImpl  = require('./js/multerImpl'),
   // methodOverride = require('method-override'),
   // morgan = require('morgan'),
 
@@ -26,8 +29,8 @@ var
   }), */
 
   app = express(),
-  router = express.Router(),
-  routes = require('./js/routes.js'),
+  // router = express.Router(),
+  // routes = require('./js/routes.js'),
   server = http.createServer( app );
 //------------------------------------------------------
 
@@ -35,13 +38,25 @@ var
     app.use( express.static( __dirname + '/' ) );
     app.use( bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-    // app.use(multer ( {storage: storage }));
-    app.use(new MulterImpl({}).init());
+
+    // -- Had to disable the router pro tem until I figure out multer better
+    // app.use(new MulterImpl({}).init());
     // app.use(methodOverride());
     // Turn on verbose logging when needed by uncommenting line below
     // app.use(morgan('combined'));
-    routes.configRoutes( router, server);
-    app.use('/', router);
+    // routes.configRoutes( router, server);
+    //app.use('/', router);
+
+    // Temporary testing routes
+    app.get('/', function(req, res) {
+      res.sendFile('index.html', options);
+    });
+
+    app.post('/uploadHandler', upload.single('file'), function (req, res, next) {
+      console.log('How happy are you at the moment?' + JSON.stringify(req.file));
+      res.sendStatus(200);
+      // req.body will hold the text fields, if there were any
+    });
 
   // --- End server configuration
 //-----------------------------------------------------

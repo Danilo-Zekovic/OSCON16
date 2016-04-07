@@ -13,10 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.5.x",
+    "cb": "^0.1.0",
     "express": "4.10.x",
     "method-override": "2.3.x",
     "morgan": "1.6.x",
-    "multer": "0.1.8",
+    "multer": "1.1.x",
     "prerender-node": "^2.0.1",
     "react": "^0.14.8",
     "react-dropzone-component": "^1.0.0",

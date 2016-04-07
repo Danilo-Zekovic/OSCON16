@@ -12,6 +12,7 @@ function MulterImpl(config) {
             },
             onFileUploadStart: function (file) {
                 console.log(file.originalname + ' is starting ...');
+                console.log('Field name is ' +file.fieldname);
             },
             onFileUploadComplete: function (file) {
                 console.log(file.fieldname + ' uploaded to  ' + file.path);

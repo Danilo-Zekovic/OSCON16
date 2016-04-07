@@ -27,11 +27,11 @@ configRoutes = function ( router, server ) {
   router.get('/login', function(req, res) {
     res.sendFile('index.html', options);
   });
-  
-  router.post('/uploadHandler', function(req, res) {
-    console.log('\'bout to upload something');
+
+  router.post('/uploadHandler', upload.single('file'), function(req, res) {
+    console.log('\'bout to upload something ' + req.file);
     if (req.body) {
-        console.dir(req.body);
+        console.log(req.body);
     }
     res.sendStatus(200);
   });
