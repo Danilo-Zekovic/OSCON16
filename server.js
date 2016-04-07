@@ -63,7 +63,7 @@ var
     });
 
     app.post('/uploadHandler', storage.single('file'), function (req, res, next) {
-      console.log('How happy are you at the moment?' + JSON.stringify(req.file));
+      // console.log('How happy are you at the moment?' + JSON.stringify(req.file));
       res.sendStatus(200);
       // req.body will hold the text fields, if there were any
     });
