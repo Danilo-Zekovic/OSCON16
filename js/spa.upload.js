@@ -197,7 +197,7 @@ spa.upload = (function (){
   });
 
 
-  var images = [
+  var IMAGES = [
     {category: 'RPPC Postcards', circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
     {category: 'RPPC Postcards', circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
     {category: 'RPPC Postcards', circa: '1914', restricted: false, name: 'HannaWest.png'},
@@ -206,7 +206,7 @@ spa.upload = (function (){
     {category: 'Family Photos B/W', circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
   ];
   ReactDOM.render(
-    <FilterableImageTable images={images} />,
+    <FilterableImageTable images={IMAGES} />,
     document.getElementById('upload-view')
   );
       // $container.html( configMap.main_html ).show();

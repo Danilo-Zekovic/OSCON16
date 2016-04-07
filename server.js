@@ -9,38 +9,10 @@
 var
   http = require('http'),
   express = require('express'),
-  multer = require('multer'),
-  cb = require('cb'),
-  storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads/')
-    },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname + '-' + Date.now())
-    }
-  }),
-  // upload = multer({ dest: 'uploads/' }),
-  storage = multer( {storage: storage }),
   bodyParser = require('body-parser'),
-
-  // Will be removed "soon"
-  // MulterImpl  = require('./js/multerImpl'),
-  // methodOverride = require('method-override'),
-  // morgan = require('morgan'),
-
-  // Hold this for once I figure out multer
-  /* storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/tmp/my-uploads')
-    },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-    }
-  }), */
-
   app = express(),
-  // router = express.Router(),
-  // routes = require('./js/routes.js'),
+  router = express.Router(),
+  routes = require('./js/routes.js'),
   server = http.createServer( app );
 //------------------------------------------------------
 
@@ -49,30 +21,13 @@ var
     app.use( bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
-    // -- Had to disable the router pro tem until I figure out multer better
-    // app.use(new MulterImpl({}).init());
     // app.use(methodOverride());
     // Turn on verbose logging when needed by uncommenting line below
     // app.use(morgan('combined'));
-    // routes.configRoutes( router, server);
-    //app.use('/', router);
+    routes.configRoutes( router, server);
+    app.use('/', router);
 
-    // Temporary testing routes
-    app.get('/', function(req, res) {
-      res.sendFile('index.html');
-    });
-
-    app.get('/upload', function(req, res) {
-      res.sendFile('index.html');
-    });
-
-    app.post('/uploadHandler', storage.single('file'), function (req, res, next) {
-      // console.log('How happy are you at the moment?' + JSON.stringify(req.file));
-      res.sendStatus(200);
-      // req.body will hold the text fields, if there were any
-    });
-
-  // --- End server configuration
+// --- End server configuration
 //-----------------------------------------------------
 // --- Start service
 server.listen(5000);

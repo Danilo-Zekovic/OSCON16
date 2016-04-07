@@ -6,7 +6,18 @@
 // --- Local variables
 'use strict';
 var
-  configRoutes;
+  configRoutes,
+  multer = require('multer'),
+  cb = require('cb'),
+  storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+    },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname + '-' + Date.now())
+    }
+  }),
+  storage = multer( {storage: storage });
 // --- End variable declarations
 
 // --- Public API
@@ -21,6 +32,7 @@ configRoutes = function ( router, server ) {
   });
 
   router.get('/upload', function(req, res) {
+    console.log('Called for the upload route');
     res.sendFile('index.html', options);
   });
 
@@ -28,7 +40,7 @@ configRoutes = function ( router, server ) {
     res.sendFile('index.html', options);
   });
 
-  router.post('/uploadHandler', upload.single('file'), function(req, res) {
+  router.post('/uploadHandler', storage.single('file'), function(req, res) {
     console.log('\'bout to upload something ' + req.file);
     if (req.body) {
         console.log(req.body);
