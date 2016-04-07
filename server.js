@@ -62,6 +62,10 @@ var
       res.sendFile('index.html', options);
     });
 
+    app.get('/upload', function(req, res) {
+      res.sendFile('index.html', options);
+    });
+
     app.post('/uploadHandler', storage.single('file'), function (req, res, next) {
       // console.log('How happy are you at the moment?' + JSON.stringify(req.file));
       res.sendStatus(200);
