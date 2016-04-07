@@ -173,7 +173,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // End DOM client-side router methods
-  
+
   // -- end DOM-oriented methods //
 
   // -- Public API methods
@@ -184,7 +184,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // Begin Public method /initModule
-  export default function initModule ( $container ) {
+  export default function ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
 

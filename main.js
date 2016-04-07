@@ -6,6 +6,8 @@ var React = require('react');
 // (N.B. Dots in identifiers are problematical in ES6)
 // Also note that the shell isn't loaded here; it's loaded inside spa.js
 import spaInitModule from './js/spa';
+
+// I can't explain why these work OK; a mystery for my next session
 import './js/spa.home';
 import './js/spa.upload';
 import './js/spa.login';

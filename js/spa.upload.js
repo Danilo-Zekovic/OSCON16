@@ -67,6 +67,7 @@ spa.upload = (function (){
       $container.hide();
 
   // This example pilfered from "Thinking in React" on the React website
+  // This is a comment that means nothing
   var ImageCategoryRow = React.createClass({
         render: function() {
           return (<tr><th colSpan="2">{this.props.category}</th></tr>);
