@@ -32,7 +32,6 @@ configRoutes = function ( router, server ) {
   });
 
   router.get('/upload', function(req, res) {
-    console.log('Called for the upload route');
     res.sendFile('index.html', options);
   });
 
