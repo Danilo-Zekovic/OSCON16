@@ -196,7 +196,7 @@ let changeSelectedMenuItem = function(newItem) {
 
     // All of this will fall under a controller
     spa.home.initModule(jqueryMap.$home);
-    spaUpload.initModule(jqueryMap.$upload);
+    spa.upload.initModule(jqueryMap.$upload);
 
     // Set up content for both #login and #login-view divs
     spa.login.initModule(jqueryMap.$login);

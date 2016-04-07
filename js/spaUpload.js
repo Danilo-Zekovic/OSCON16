@@ -3,7 +3,7 @@
  *   Handle uplads of new images
  */
 
-spaUpload = (function (){
+spa.upload = (function (){
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');
