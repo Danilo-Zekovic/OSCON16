@@ -27,6 +27,7 @@ configRoutes = function ( router, server ) {
   router.get('/login', function(req, res) {
     res.sendFile('index.html', options);
   });
+  
   router.post('/uploadHandler', function(req, res) {
     console.log('\'bout to upload something');
     if (req.body) {
