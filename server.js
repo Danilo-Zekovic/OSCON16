@@ -59,11 +59,11 @@ var
 
     // Temporary testing routes
     app.get('/', function(req, res) {
-      res.sendFile('index.html', options);
+      res.sendFile('index.html');
     });
 
     app.get('/upload', function(req, res) {
-      res.sendFile('index.html', options);
+      res.sendFile('index.html');
     });
 
     app.post('/uploadHandler', storage.single('file'), function (req, res, next) {
