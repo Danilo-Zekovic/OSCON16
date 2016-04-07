@@ -6,7 +6,10 @@
 
 @import "layouts/marketing-old-ie.css";
 @import "layouts/marketing.css";
-@import "menuToggle.css";
+@import "menuToggle.css";                  /* Danilo Zekovic */
+@import "filepicker.css";                  /* Brian Capouch */
+@import "dropzone.css";                    /* Brian Capouch */
+@import "uploader.css";                    /* Brian Capouch */
 
 .splash-container {
   background-image: url("img/background.png");
