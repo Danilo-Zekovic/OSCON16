@@ -16,7 +16,7 @@
     "express": "4.10.x",
     "method-override": "2.3.x",
     "morgan": "1.6.x",
-    "multer": "^0.1.8",
+    "multer": "0.1.8",
     "prerender-node": "^2.0.1",
     "react": "^0.14.8",
     "react-dropzone-component": "^1.0.0",

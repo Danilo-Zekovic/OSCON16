@@ -9,11 +9,21 @@
 var
   http = require('http'),
   express = require('express'),
-  multer = require('multer'),
+  // multer = require('multer'),
   bodyParser = require('body-parser'),
   MulterImpl  = require('./js/multerImpl'),
   // methodOverride = require('method-override'),
   // morgan = require('morgan'),
+
+  // Hold this for once I figure out multer
+  /* storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/tmp/my-uploads')
+    },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+    }
+  }), */
 
   app = express(),
   router = express.Router(),
@@ -25,6 +35,7 @@ var
     app.use( express.static( __dirname + '/' ) );
     app.use( bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+    // app.use(multer ( {storage: storage }));
     app.use(new MulterImpl({}).init());
     // app.use(methodOverride());
     // Turn on verbose logging when needed by uncommenting line below
