@@ -5,6 +5,9 @@
 */
 
 /* Modified to ES6 and no longer a self-executing function  BLC */
+import uploadInitModule from './spaUpload'
+import homeInitModule from './spaHome'
+import loginInitModule from './spaLogin'
 
   let configMap = {
       main_html : String()
@@ -195,12 +198,12 @@ let changeSelectedMenuItem = function(newItem) {
     setJqueryMap();
 
     // All of this will fall under a controller
-    spa.home.initModule(jqueryMap.$home);
-    spa.upload.initModule(jqueryMap.$upload);
+    homeInitModule(jqueryMap.$home);
+    uploadInitModule(jqueryMap.$upload);
 
     // Set up content for both #login and #login-view divs
-    spa.login.initModule(jqueryMap.$login);
-    spa.login.initModule(jqueryMap.$splashLog);
+    loginInitModule(jqueryMap.$login);
+    loginInitModule(jqueryMap.$splashLog);
 
     // See http://stackoverflow.com/questions/22061595/how-to-show-hide-reactjs-components
     jqueryMap.$home.hide();

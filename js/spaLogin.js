@@ -4,7 +4,6 @@
  * testing to display home view
  */
 
-spa.login = (function (){
   'use strict';
   // begin local variables
   var
@@ -60,10 +59,10 @@ spa.login = (function (){
     },
 
     jqueryMap = {},
-    initModule, serverURL, setJqueryMap;
+    initModule, serverURL;
     // end local variables
 
-    setJqueryMap = function () {
+  let  setJqueryMap = function () {
       var $container = stateMap.$container;
 
       jqueryMap = {
@@ -72,7 +71,7 @@ spa.login = (function (){
     };
 
     // public methods
-    initModule = function ( $container ) {
+    export default function initModule ( $container ) {
 
       console.log("login page reached");
       //set to taste
@@ -87,9 +86,3 @@ spa.login = (function (){
       console.log("initModule over");
 
     };
-
-    return {
-      initModule  : initModule,
-      //postSection : postSection
-    };
-}());

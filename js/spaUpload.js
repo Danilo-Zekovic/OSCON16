@@ -3,14 +3,13 @@
  *   Handle uplads of new images
  */
 
-spa.upload = (function (){
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');
   let DropZoneComponent = require('react-dropzone-component');
 
   // begin local variables
-  var
+  let
     // Configuration and setup for DropZoneComponent
     componentConfig = {
       iconFiletypes: ['.jpg', '.png', '.gif','tif'],
@@ -91,14 +90,14 @@ spa.upload = (function (){
     },
 
     jqueryMap = {},
-    initModule, serverURL, setJqueryMap;
+    initModule, serverURL;
     // end local variables
 
     // Figure out later where these belong
     // var React = require('react');
     // var Router = require('react-router');
 
-    setJqueryMap = function () {
+    let setJqueryMap = function () {
       var $container = stateMap.$container;
 
       jqueryMap = {
@@ -107,7 +106,7 @@ spa.upload = (function (){
     };
 
     // public methods
-    initModule = function ( $container ) {
+    export default function initModule ( $container ) {
 
       console.log("upload page reached");
       //set to taste
@@ -119,13 +118,13 @@ spa.upload = (function (){
 
   // This example pilfered from "Thinking in React" on the React website
   // This is a comment that means nothing
-  var ImageCategoryRow = React.createClass({
+  let ImageCategoryRow = React.createClass({
         render: function() {
           return (<tr><th colSpan="2">{this.props.category}</th></tr>);
         }
       });
 
-  var ImageRow = React.createClass({
+  let ImageRow = React.createClass({
     render: function() {
       var name = this.props.image.restricted ?
         this.props.image.name :
@@ -141,7 +140,7 @@ spa.upload = (function (){
     }
   });
 
-  var ImageTable = React.createClass({
+  let ImageTable = React.createClass({
     render: function() {
       var rows = [];
       var lastCategory = null;
@@ -166,7 +165,7 @@ spa.upload = (function (){
     }
   });
 
-  var SearchBar = React.createClass({
+  let SearchBar = React.createClass({
     render: function() {
       return (
         <form>
@@ -181,7 +180,7 @@ spa.upload = (function (){
     }
   });
 
-  var FilterableImageTable = React.createClass({
+  let FilterableImageTable = React.createClass({
     render: function() {
       return (
         <div>
@@ -196,7 +195,7 @@ spa.upload = (function (){
   });
 
 
-  var IMAGES = [
+  let IMAGES = [
     {category: 'RPPC Postcards', circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
     {category: 'RPPC Postcards', circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
     {category: 'RPPC Postcards', circa: '1914', restricted: false, name: 'HannaWest.png'},
@@ -209,15 +208,7 @@ spa.upload = (function (){
     document.getElementById('upload-view')
   );
       // $container.html( configMap.main_html ).show();
-
       setJqueryMap();
       console.log('Does react exist? ' + typeof(React));
       console.log("upload initModule over");
-
     };
-
-    return {
-      initModule  : initModule,
-      //postSection : postSection
-    };
-}());
