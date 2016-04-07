@@ -1,10 +1,9 @@
 /*
- * spa.home.js
- * Danilo Zekovic
- * testing to display home view
+ * spa.upload.js
+ *   Handle uplads of new images
  */
 
-spa.upload = (function (){
+spaUpload = (function (){
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');

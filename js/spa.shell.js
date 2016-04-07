@@ -4,7 +4,7 @@
  * Main shell, basic structure of the app
 */
 
-/* Modified to ES6 and no longer a self-executing function */
+/* Modified to ES6 and no longer a self-executing function  BLC */
 
   let configMap = {
       main_html : String()
@@ -196,7 +196,7 @@ let changeSelectedMenuItem = function(newItem) {
 
     // All of this will fall under a controller
     spa.home.initModule(jqueryMap.$home);
-    spa.upload.initModule(jqueryMap.$upload);
+    spaUpload.initModule(jqueryMap.$upload);
 
     // Set up content for both #login and #login-view divs
     spa.login.initModule(jqueryMap.$login);

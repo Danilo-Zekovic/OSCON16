@@ -9,7 +9,7 @@ import spaInitModule from './js/spa';
 
 // I can't explain why these work OK; a mystery for my next session
 import './js/spa.home';
-import './js/spa.upload';
+import './js/spaUpload';
 import './js/spa.login';
 
 // Stage Three: Launch! (Presently, a hybrid of old and new techniques)
