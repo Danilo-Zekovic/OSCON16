@@ -28,7 +28,7 @@ var
     app.use(methodOverride());
     // Turn on verbose logging when needed by uncommenting line below
     // app.use(morgan('combined'));
-    routes.configRoutes( router, server, __dirname );
+    routes.configRoutes( router, server);
     app.use('/', router);
 
   // --- End server configuration

@@ -11,8 +11,7 @@ var
 
 // --- Public API
 
-configRoutes = function ( router, server, path ) {
-
+configRoutes = function ( router, server ) {
   var options = {
     root: __dirname + '/../'
    };
@@ -27,6 +26,13 @@ configRoutes = function ( router, server, path ) {
 
   router.get('/login', function(req, res) {
     res.sendFile('index.html', options);
+  });
+  router.post('/uploadHandler', function(req, res) {
+    console.log('\'bout to upload something');
+    if (req.body) {
+        console.dir(req.body);
+    }
+    res.sendStatus(200);
   });
 };
 

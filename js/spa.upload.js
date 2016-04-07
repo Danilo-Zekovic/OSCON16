@@ -8,8 +8,20 @@ spa.upload = (function (){
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');
+  let DropZoneComponent = require('react-dropzone-component');
+
   // begin local variables
   var
+    // Configuration and setup for DropZoneComponent
+    componentConfig = {
+      iconFiletypes: ['.jpg', '.png', '.gif','tif'],
+      showFiletypeIcon: true,
+      postUrl: '/uploadHandler'
+    },
+    djsConfig = {
+      addRemoveLinks: true,
+      acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
+    },
     configMap = {
       main_html : String()
         +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'
@@ -136,6 +148,8 @@ spa.upload = (function (){
         <div>
           <SearchBar />
           <ImageTable images={this.props.images} />
+          <DropZoneComponent  config={componentConfig}
+                              djsConfig={djsConfig} />
         </div>
       );
     }
