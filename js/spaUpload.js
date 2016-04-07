@@ -1,15 +1,65 @@
 /*
- * spa.home.js
- * Danilo Zekovic
- * testing to display home view
+ * spa.upload.js
+ *   Handle uplads of new images
  */
 
-spa.upload = (function (){
   'use strict';
   let React = require('react');
   let ReactDOM = require('react-dom');
+  let DropZoneComponent = require('react-dropzone-component');
+
   // begin local variables
-  var
+  let
+    // Configuration and setup for DropZoneComponent
+    componentConfig = {
+      iconFiletypes: ['.jpg', '.png', '.gif','tif'],
+      showFiletypeIcon: true,
+      postUrl: '/uploadHandler'
+    },
+    eventHandlers = {
+    // This one receives the dropzone object as the first parameter
+    // and can be used to additional work with the dropzone.js
+    // object
+    init: null,
+    // All of these receive the event as first parameter:
+    drop: null,
+    dragstart: null,
+    dragend: null,
+    dragenter: null,
+    dragover: null,
+    dragleave: null,
+    // All of these receive the file as first parameter:
+    addedfile: null,
+    removedfile: null,
+    thumbnail: null,
+    error: null,
+    processing: null,
+    uploadprogress: null,
+    sending: null,
+    success: null,
+    complete: null,
+    canceled: null,
+    maxfilesreached: null,
+    maxfilesexceeded: null,
+    // All of these receive a list of files as first parameter
+    // and are only called if the uploadMultiple option
+    // in djsConfig is true:
+    processingmultiple: null,
+    sendingmultiple: null,
+    successmultiple: null,
+    completemultiple: null,
+    canceledmultiple: null,
+    // Special Events
+    totaluploadprogress: null,
+    reset: null,
+    queuecomplete: null
+  },
+    djsConfig = {
+      addRemoveLinks: true,
+      acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
+    },
+
+    // Legacy code
     configMap = {
       main_html : String()
         +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'
@@ -40,14 +90,14 @@ spa.upload = (function (){
     },
 
     jqueryMap = {},
-    initModule, serverURL, setJqueryMap;
+    initModule, serverURL;
     // end local variables
 
     // Figure out later where these belong
     // var React = require('react');
     // var Router = require('react-router');
 
-    setJqueryMap = function () {
+    let setJqueryMap = function () {
       var $container = stateMap.$container;
 
       jqueryMap = {
@@ -56,7 +106,7 @@ spa.upload = (function (){
     };
 
     // public methods
-    initModule = function ( $container ) {
+    export default function initModule ( $container ) {
 
       console.log("upload page reached");
       //set to taste
@@ -68,13 +118,13 @@ spa.upload = (function (){
 
   // This example pilfered from "Thinking in React" on the React website
   // This is a comment that means nothing
-  var ImageCategoryRow = React.createClass({
+  let ImageCategoryRow = React.createClass({
         render: function() {
           return (<tr><th colSpan="2">{this.props.category}</th></tr>);
         }
       });
 
-  var ImageRow = React.createClass({
+  let ImageRow = React.createClass({
     render: function() {
       var name = this.props.image.restricted ?
         this.props.image.name :
@@ -90,7 +140,7 @@ spa.upload = (function (){
     }
   });
 
-  var ImageTable = React.createClass({
+  let ImageTable = React.createClass({
     render: function() {
       var rows = [];
       var lastCategory = null;
@@ -115,7 +165,7 @@ spa.upload = (function (){
     }
   });
 
-  var SearchBar = React.createClass({
+  let SearchBar = React.createClass({
     render: function() {
       return (
         <form>
@@ -130,19 +180,22 @@ spa.upload = (function (){
     }
   });
 
-  var FilterableImageTable = React.createClass({
+  let FilterableImageTable = React.createClass({
     render: function() {
       return (
         <div>
           <SearchBar />
           <ImageTable images={this.props.images} />
+          <DropZoneComponent  config={componentConfig}
+                              eventHandlers={eventHandlers}
+                              djsConfig={djsConfig} />
         </div>
       );
     }
   });
 
 
-  var images = [
+  let IMAGES = [
     {category: 'RPPC Postcards', circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
     {category: 'RPPC Postcards', circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
     {category: 'RPPC Postcards', circa: '1914', restricted: false, name: 'HannaWest.png'},
@@ -151,19 +204,11 @@ spa.upload = (function (){
     {category: 'Family Photos B/W', circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
   ];
   ReactDOM.render(
-    <FilterableImageTable images={images} />,
+    <FilterableImageTable images={IMAGES} />,
     document.getElementById('upload-view')
   );
       // $container.html( configMap.main_html ).show();
-
       setJqueryMap();
       console.log('Does react exist? ' + typeof(React));
       console.log("upload initModule over");
-
     };
-
-    return {
-      initModule  : initModule,
-      //postSection : postSection
-    };
-}());

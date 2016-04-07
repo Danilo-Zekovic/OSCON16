@@ -5,9 +5,15 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    port: 5000,
-    inline: true
+    port: 5001,
+    inline: true,
+    proxy: {
+    '/uploadHandler*': {
+      target: 'http://localhost:5000',
+      secure: false,
+      },
     },
+  },
   module: {
     loaders: [
       {

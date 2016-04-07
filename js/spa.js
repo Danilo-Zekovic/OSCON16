@@ -6,7 +6,7 @@
 
 
   // This is paired with a new ES6 "export default" in the shell's code
-  import initModule from './spa.shell';
+  import initModule from './spaShell';
 
   export default function ( $container ) {
     console.log('We got into spa');

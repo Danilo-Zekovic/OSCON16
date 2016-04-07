@@ -4,10 +4,9 @@
  * testing to display home view
  */
 
-spa.home = (function (){
   'use strict';
   // begin local variables
-  var
+  let
     configMap = {
       main_html : String()
         +     '<h2 class="content-head is-center">EXPLORE THE FASCINATING WORLD OF HISTORICAL IMAGES</h2>'
@@ -61,10 +60,10 @@ spa.home = (function (){
     },
 
     jqueryMap = {},
-    initModule, serverURL, setJqueryMap;
+    initModule, serverURL;
     // end local variables
 
-    setJqueryMap = function () {
+    let setJqueryMap = function () {
       var $container = stateMap.$container;
 
       jqueryMap = {
@@ -73,7 +72,7 @@ spa.home = (function (){
     };
 
     // public methods
-    initModule = function ( $container ) {
+    export default function initModule ( $container ) {
 
       console.log("home page reached");
       //set to taste
@@ -88,9 +87,3 @@ spa.home = (function (){
       console.log("initModule over");
 
     };
-
-    return {
-      initModule  : initModule,
-      //postSection : postSection
-    };
-}());
