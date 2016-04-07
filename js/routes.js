@@ -7,6 +7,8 @@
 'use strict';
 var
   configRoutes,
+
+  // Multer handles MIME multi-part uploads
   multer = require('multer'),
   cb = require('cb'),
   storage = multer.diskStorage({
@@ -39,6 +41,7 @@ configRoutes = function ( router, server ) {
     res.sendFile('index.html', options);
   });
 
+  // Fetch uploaded file handled by "storage" object in multer
   router.post('/uploadHandler', storage.single('file'), function(req, res) {
     console.log('\'bout to upload something ' + req.file);
     if (req.body) {
