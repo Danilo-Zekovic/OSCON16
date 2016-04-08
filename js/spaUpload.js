@@ -12,7 +12,7 @@
   let
     // Configuration and setup for DropZoneComponent
     componentConfig = {
-      iconFiletypes: ['.jpg', '.png', '.gif','tif'],
+      iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
       showFiletypeIcon: true,
       postUrl: '/uploadHandler'
     },
