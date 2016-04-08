@@ -4,9 +4,9 @@
  */
 
   'use strict';
-  let React = require('react');
-  let ReactDOM = require('react-dom');
-
+  import React from 'react'
+  import ReactDOM from 'react-dom'
+  
   // begin local variables
   let
     // Configuration and setup for DropZoneComponent
