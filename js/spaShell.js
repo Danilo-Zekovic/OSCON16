@@ -8,6 +8,7 @@
 import uploadInitModule from './spaUpload'
 import homeInitModule from './spaHome'
 import loginInitModule from './spaLogin'
+import browseInitModule from './spaBrowse'
 
   let configMap = {
       main_html : String()
@@ -175,6 +176,19 @@ let changeSelectedMenuItem = function(newItem) {
     }
   }
 
+  let browse = function () {
+    console.log("Reached browse");
+    if( currentMod != jqueryMap.$browse ) {
+      changeSelectedMenuItem('menuBrowse');
+      // Hide current main content
+      currentMod.hide();
+      // In this case we also have to hide the "#login" div
+      jqueryMap.$splashLog.hide();
+      currentMod = jqueryMap.$browse;
+      currentMod.show();
+    }
+  }
+
   // End DOM client-side router methods
 
   // -- end DOM-oriented methods //
@@ -200,6 +214,7 @@ let changeSelectedMenuItem = function(newItem) {
     // All of this will fall under a controller
     homeInitModule(jqueryMap.$home);
     uploadInitModule(jqueryMap.$upload);
+    browseInitModule(jqueryMap.$browse);
 
     // Set up content for both #login and #login-view divs
     loginInitModule(jqueryMap.$login);
@@ -208,6 +223,7 @@ let changeSelectedMenuItem = function(newItem) {
     // See http://stackoverflow.com/questions/22061595/how-to-show-hide-reactjs-components
     jqueryMap.$home.hide();
     jqueryMap.$upload.hide();
+    jqueryMap.$browse.hide();
     jqueryMap.$login.hide();
 
     // Default content is "home" screen
@@ -218,7 +234,7 @@ let changeSelectedMenuItem = function(newItem) {
     // Set up routes
     page('/', index);
     page('/upload', upload);
-    //page('/browse', browse);
+    page('/browse', browse);
     //page('/dashboard', dashboard);
     page('/login', login);
     page();

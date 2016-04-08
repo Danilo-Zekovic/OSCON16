@@ -9,7 +9,7 @@
 @import "menuToggle.css";                  /* Danilo Zekovic */
 @import "filepicker.css";                  /* Brian Capouch */
 @import "dropzone.min.css";                    /* Brian Capouch */
-
+@import "uploader.css";                    /* Brian Capouch */
 
 .splash-container {
   background-image: url("img/background.png");
