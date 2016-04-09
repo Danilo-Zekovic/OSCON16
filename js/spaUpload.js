@@ -91,10 +91,10 @@
     },
 
     jqueryMap = {},
-    initModule, serverURL;
+    initModule, serverURL, imageNames;
     // end local variables
 
-    // React GraphQL playground
+  // React GraphQL playground - currently not yet working
   let CommentBox = React.createClass({
       loadCommentsFromServer: function(callback) {
         http.get({
@@ -155,31 +155,35 @@
       stateMap.$container = $container;
       $container.hide();
 
-      var options = {
+      // Skeletal code to do GraphQL queries in the app
+      var requestOptions = {
       host: '127.0.0.1:5000',
       path: '/oscon-test?query=query+{imageRecs{title}}'
-    };
+      };
 
-  let  callback = function(response) {
-      var str = '';
+      let callback = function(response) {
+        var data = '';
 
-      //another chunk of data has been recieved, so append it to `str`
-      response.on('data', function (chunk) {
-        str += chunk;
-      });
+        //another chunk of data has been recieved, so append it to `str`
+        response.on('data', function (chunk) {
+          data += chunk;
+        });
 
-      //the whole response has been recieved, so we just print it out here
-      response.on('end', function () {
-        console.log(str);
-      });
-    }
+        //the whole response has been recieved, so we just print it out here
+        response.on('end', function () {
+          console.log(data);
+        });
+      }
 
-    http.request(options, callback).end();
+    http.request(requestOptions, callback).end();
 
     ReactDOM.render(
+      <div>
+      <h2>imageNames</h2>
       <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
-                        djsConfig={djsConfig} />,
+                        djsConfig={djsConfig} />
+                    </div>,
       document.getElementById('upload-view')
     );
       // $container.html( configMap.main_html ).show();
