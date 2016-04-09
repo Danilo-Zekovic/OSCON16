@@ -131,9 +131,7 @@
     );
   }
 });
-    // Figure out later where these belong
-    // var React = require('react');
-    // var Router = require('react-router');
+;
 
     let setJqueryMap = function () {
       var $container = stateMap.$container;
