@@ -33,7 +33,7 @@ app.use( express.static( __dirname + '/' ) );
 mongoose.connect('mongodb://localhost/oscon-test');
 
 // start server
-server.listen(8080);
+server.listen(5000);
 console.log(
   'Express server listening on port %d in %s mode',
   server.address().port, app.settings.env
