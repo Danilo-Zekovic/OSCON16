@@ -85,11 +85,9 @@
 
         +     '</div>'
     },
-
     stateMap = {
       $container : undefined
     },
-
     jqueryMap = {},
     initModule, serverURL, imageNames;
     // end local variables
@@ -145,18 +143,12 @@
     export default function initModule ( $container ) {
 
       console.log("upload page reached");
-      //set to taste
-      //serverURL = 'http://localhost:4000';
-
-      // load HTML and jquery collections
-      stateMap.$container = $container;
-      $container.hide();
 
       // Skeletal code to do GraphQL queries in the app
       // First set target and notice for now it's numeric IP; long story
       var requestOptions = {
       host: '127.0.0.1:5000',
-      path: '/oscon-test?query=query+{imageRecs{title}}'
+      path: '/oscon-test?query=query+{imageRecs{title, _id}}'
       };
       // Define what happens after the server replies
       let callback = function(response) {
