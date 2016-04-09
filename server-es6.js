@@ -21,7 +21,8 @@ app.use(bodyParser.json());
 app.use('/oscon-test', graphqlHTTP(req => ({
   schema,
   pretty: true,
-  graphiql: true
+  // For query/schema debugging turn this on
+  // graphiql: true
 })));
 
 // Generic routers

@@ -7,6 +7,7 @@
   import React from 'react'
   import ReactDOM from 'react-dom'
   import DropZoneComponent from 'react-dropzone-component'
+  import http from 'http'
 
   // begin local variables
   let
@@ -93,6 +94,44 @@
     initModule, serverURL;
     // end local variables
 
+    // React GraphQL playground
+  let CommentBox = React.createClass({
+      loadCommentsFromServer: function(callback) {
+        http.get({
+          host: 'localhost:5000',
+          path: '/oscon-data?query=query+{imageRecs{title}}'
+      }, function(response) {
+          // Continuously update stream with data
+          var body = '';
+          response.on('data', function(d) {
+              body += d;
+              console.log('Body: ' + body);
+          });
+          response.on('end', function() {
+
+              // Data reception is done, do whatever with it!
+              var parsed = JSON.parse(body);
+              callback({
+                  data: parsed
+              });
+          });
+      }).bind(this)
+  },
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentDidMount: function() {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  },
+  render: function() {
+    return (
+      <div className="commentBox">
+        <h1>Comments</h1>
+      </div>
+    );
+  }
+});
     // Figure out later where these belong
     // var React = require('react');
     // var Router = require('react-router');
@@ -115,6 +154,27 @@
       // load HTML and jquery collections
       stateMap.$container = $container;
       $container.hide();
+
+      var options = {
+      host: '127.0.0.1:5000',
+      path: '/oscon-test?query=query+{imageRecs{title}}'
+    };
+
+  let  callback = function(response) {
+      var str = '';
+
+      //another chunk of data has been recieved, so append it to `str`
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      //the whole response has been recieved, so we just print it out here
+      response.on('end', function () {
+        console.log(str);
+      });
+    }
+
+    http.request(options, callback).end();
 
     ReactDOM.render(
       <DropZoneComponent  config={componentConfig}
