@@ -3,19 +3,20 @@
  *   Handle uplads of new images
  */
 
-  'use strict';
-  import React from 'react'
-  import ReactDOM from 'react-dom'
-  import DropZoneComponent from 'react-dropzone-component'
-  import http from 'http'
+'use strict';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import DropZoneComponent from 'react-dropzone-component'
+import http from 'http'
+import marked from 'marked'
 
   // begin local variables
-  let
-    // Configuration and setup for DropZoneComponent
+let
+  // Configuration and setup for DropZoneComponent
     componentConfig = {
-      iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
-      showFiletypeIcon: true,
-      postUrl: '/uploadHandler'
+    iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
+    showFiletypeIcon: true,
+    postUrl: '/uploadHandler'
     },
     eventHandlers = {
     // This one receives the dropzone object as the first parameter
@@ -60,129 +61,98 @@
       acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
     },
 
-    // Legacy code
-    configMap = {
-      main_html : String()
-        +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'
-        +     '<div class="pure-g">'
-
-        +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
-        +       '<p>Description what user is suposed to do here</p>'
-        +       '<form class="pure-form pure-form-stacked">'
-        +         '<fieldset>'
-
-        +           '<label for="name">Your Name</label>'
-        +           '<input id="name" type="text" placeholder="Your Name">'
-
-        +           '<label for="time">When was it taken</label>'
-        +           '<input id="time" type="text" placeholder="Time">'
-
-        +           '<label for="location">Where was the picture taken</label>'
-        +           '<input id="location" type="text" placeholder="Location?">'
-
-        +           '<button type="submit" class="pure-button">Upload</button>'
-        +         '</fieldset>'
-
-        +     '</div>'
-    },
-    stateMap = {
-      $container : undefined
-    },
-    jqueryMap = {},
     initModule, serverURL, imageNames;
     // end local variables
 
-  // React GraphQL playground - currently not yet working
-  let CommentBox = React.createClass({
-      loadCommentsFromServer: function(callback) {
-        http.get({
-          host: 'localhost:5000',
-          path: '/oscon-data?query=query+{imageRecs{title}}'
-      }, function(response) {
-          // Continuously update stream with data
-          var body = '';
-          response.on('data', function(d) {
-              body += d;
-              console.log('Body: ' + body);
-          });
-          response.on('end', function() {
-              // Data reception is done, do whatever with it!
-              var parsed = JSON.parse(body);
-              callback({
-                  data: parsed
-              });
-          });
-      }).bind(this)
+// React classes to fetch and display existing records
+var Record = React.createClass({
+  rawMarkup: function() {
+    var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+    return { __html: this.props.children };
   },
+  render: function() {
+  return (
+    <div className="comment">
+      <h5 className="commentAuthor">
+        {this.props.title}
+      </h5>
+      <span dangerouslySetInnerHTML={this.rawMarkup()} />
+    </div>
+  );
+}
+});
+
+let RecordManager = React.createClass({
+  loadRecordsFromServer: function() {
+      // IRONY: Using an AJAX call to get the GrqphQL data from server!
+      $.ajax({
+        url: this.props.url,
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+          // console.log('Please print!! ' + JSON.stringify(data.data.imageRecs));
+          this.setState({data: data.data.imageRecs});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    },
   getInitialState: function() {
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    this.loadRecordsFromServer();
+    // This polls the server; not quite sure why . . .
+    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
-      <div className="commentBox">
-        <h1>Comments</h1>
+      <div className="recordBox">
+        <h4>Demographics - Pulled from MongoDB via GraphQL</h4>
+        <RecordList data={this.state.data} />
       </div>
     );
   }
 });
 ;
 
-    let setJqueryMap = function () {
-      var $container = stateMap.$container;
-
-      jqueryMap = {
-        $container : $container
-      };
-    };
-
-    // public methods
-    export default function initModule ( $container ) {
-
-      console.log("upload page reached");
-
-      // Skeletal code to do GraphQL queries in the app
-      // First set target and notice for now it's numeric IP; long story
-      var requestOptions = {
-      //host: '127.0.0.1:5000',
-      path: '/oscon-test?query=query+{imageRecs{title, _id}}'
-      };
-      // Define what happens after the server replies
-      let callback = function(response) {
-        var data = '';
-
-        //another chunk of data has been recieved, so append it to `str`
-        response.on('data', function (chunk) {
-          data += chunk;
-        });
-
-        //the whole response has been recieved, so we just print it out here
-        response.on('end', function () {
-          // This happens AFTER AFTER the page is rendered!!
-          // For now, just stuff it raw into our element
-          document.getElementById("data-display").innerHTML = data;
-        });
-      }
-    // Make it happen!!
-    http.request(requestOptions, callback).end();
-
-    // This constitutes the whole view to the user
-    ReactDOM.render(
-      <div>
-      <div id="data-display">
-      <h2>imageNames</h2>
+var RecordList = React.createClass({
+  render: function() {
+    var recordNodes = this.props.data.map(function(record) {
+      return (
+        <Record title={record.title} key={record._id}>
+          {record.description}
+        </Record>
+      );
+    });
+    return (
+      <div className="recordList">
+        {recordNodes}
       </div>
-      <DropZoneComponent  config={componentConfig}
+    );
+  }
+});
+
+
+// public method
+export default function initModule ( $container ) {
+
+  console.log("upload page reached");
+
+  // This constitutes the whole view to the user
+  ReactDOM.render(
+    <div>
+    <div id="data-display">
+    <RecordManager url="/oscon-test?query=query+{imageRecs{_id, title, description}}"
+    pollInterval={2000}
+    />
+    </div>
+    <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
                         djsConfig={djsConfig} />
-                    </div>,
-      document.getElementById('upload-view')
+                        </div>,
+    document.getElementById('upload-view')
     );
-      // $container.html( configMap.main_html ).show();
-      setJqueryMap();
-      console.log('Does react exist? ' + typeof(React));
-      console.log("upload initModule over");
-    };
+  console.log("upload initModule over");
+  };
