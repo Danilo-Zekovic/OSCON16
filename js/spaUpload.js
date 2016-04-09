@@ -108,7 +108,6 @@
               console.log('Body: ' + body);
           });
           response.on('end', function() {
-
               // Data reception is done, do whatever with it!
               var parsed = JSON.parse(body);
               callback({
@@ -172,13 +171,14 @@
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
           console.log(data);
+          document.getElementById("data-display").innerHTML = data;
         });
       }
 
     http.request(requestOptions, callback).end();
 
     ReactDOM.render(
-      <div>
+      <div id="data-display">
       <h2>imageNames</h2>
       <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
