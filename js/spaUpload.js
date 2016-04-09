@@ -181,8 +181,10 @@
 
     // This constitutes the whole view to the user
     ReactDOM.render(
+      <div>
       <div id="data-display">
       <h2>imageNames</h2>
+      </div>
       <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
                         djsConfig={djsConfig} />
