@@ -147,7 +147,7 @@
       // Skeletal code to do GraphQL queries in the app
       // First set target and notice for now it's numeric IP; long story
       var requestOptions = {
-      host: '127.0.0.1:5000',
+      //host: '127.0.0.1:5000',
       path: '/oscon-test?query=query+{imageRecs{title, _id}}'
       };
       // Define what happens after the server replies
