@@ -116,12 +116,12 @@
       stateMap.$container = $container;
       $container.hide();
 
-  ReactDOM.render(
-    <DropZoneComponent  config={componentConfig}
+    ReactDOM.render(
+      <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
                         djsConfig={djsConfig} />,
-    document.getElementById('upload-view')
-  );
+      document.getElementById('upload-view')
+    );
       // $container.html( configMap.main_html ).show();
       setJqueryMap();
       console.log('Does react exist? ' + typeof(React));
