@@ -155,11 +155,12 @@
       $container.hide();
 
       // Skeletal code to do GraphQL queries in the app
+      // First set target and notice for now it's numeric IP; long story
       var requestOptions = {
       host: '127.0.0.1:5000',
       path: '/oscon-test?query=query+{imageRecs{title}}'
       };
-
+      // Define what happens after the server replies
       let callback = function(response) {
         var data = '';
 
@@ -170,13 +171,15 @@
 
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
-          console.log(data);
+          // This happens AFTER AFTER the page is rendered!!
+          // For now, just stuff it raw into our element
           document.getElementById("data-display").innerHTML = data;
         });
       }
-
+    // Make it happen!!
     http.request(requestOptions, callback).end();
 
+    // This constitutes the whole view to the user
     ReactDOM.render(
       <div id="data-display">
       <h2>imageNames</h2>
