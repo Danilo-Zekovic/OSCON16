@@ -8,7 +8,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import DropZoneComponent from 'react-dropzone-component'
 import http from 'http'
-import marked from 'marked'
 
   // begin local variables
 let
