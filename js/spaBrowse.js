@@ -10,14 +10,25 @@ import Griddle from 'griddle-react'
 // private methods
 
 // Options for Griddle table generator
-let  columnMeta = [
+// Save this: return <a href={url}>{this.props.data}</a>
+// Note that for now we just hardcode the link target in the url variable
+let LinkComponent = React.createClass({
+    render: function(){
+      let url = "/uploads/newLine.jpg-1460318860494.jpg";
+      return <a href={url}>{this.props.data}</a>
+    }
+  });
+
+
+let  customColumnMetadata = [
   {
     "columnName": "title",
     "displayName": "Image Title"
   },
   {
     "columnName": "filename",
-    "displayName": "Filename"
+    "displayName": "Filename",
+    "customComponent": LinkComponent
   },
   {
     "columnName": "description",
@@ -59,7 +70,7 @@ let InfoTable = React.createClass({
         <SearchBar />
         <Griddle results={this.state.records}
           columns={['title','filename', "description"]}
-          columnMetadata={columnMeta}
+          columnMetadata={customColumnMetadata}
           showSettings={true}
           />
       </div>
@@ -82,7 +93,7 @@ let SearchBar = React.createClass({
     }
   });
 
-// end private members
+// end private members/methods
 
 // public methods
 export default function browseInitModule ( ) {
