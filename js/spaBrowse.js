@@ -30,18 +30,19 @@ let InfoTable = React.createClass({
   // IRONY: Using an AJAX call to get the GrqphQL data from server!
   loadRecordsFromServer: function() {
       $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        // console.log('Please print!! ' + JSON.stringify(data.data.imageRecs));
-        this.setState({records: data.data.imageRecs});
+        type: "POST",
+        url: this.props.url,
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+          // console.log('Please print!! ' + JSON.stringify(data.data.imageRecs));
+          this.setState({records: data.data.imageRecs});
         }.bind(this),
           error: function(xhr, status, err) {
           console.error(this.props.url, status, err.toString());
         }.bind(this)
       });
-  },
+    },
   getInitialState: function() {
     // Should this be a call to loadRecordsFromServer?
     return {records: []};
