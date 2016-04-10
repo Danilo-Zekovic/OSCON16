@@ -43,6 +43,7 @@ let InfoTable = React.createClass({
       });
   },
   getInitialState: function() {
+    // Should this be a call to loadRecordsFromServer?
     return {records: []};
   },
   componentDidMount: function() {
