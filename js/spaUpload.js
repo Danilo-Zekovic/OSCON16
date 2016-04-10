@@ -12,12 +12,12 @@ import http from 'http'
   // begin local variables
 let
   // Configuration and setup for DropZoneComponent
-    componentConfig = {
+  componentConfig = {
     iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
     showFiletypeIcon: true,
     postUrl: '/uploadHandler'
-    },
-    eventHandlers = {
+  },
+  eventHandlers = {
     // This one receives the dropzone object as the first parameter
     // and can be used to additional work with the dropzone.js
     // object

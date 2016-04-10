@@ -25,7 +25,7 @@ let  columnMeta = [
   }
  ];
 
-// We have hijacked the semantics of this element and patched in Griggle
+// We have hijacked the semantics of this element and patched in Griddle
 let InfoTable = React.createClass({
   // IRONY: Using an AJAX call to get the GrqphQL data from server!
   loadRecordsFromServer: function() {
