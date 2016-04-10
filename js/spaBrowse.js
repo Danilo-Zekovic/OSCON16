@@ -85,7 +85,7 @@ let SearchBar = React.createClass({
 // end private members
 
 // public methods
-export default function browseInitModule ( $container ) {
+export default function browseInitModule ( ) {
   console.log("browse page reached");
   ReactDOM.render(
     <InfoTable
