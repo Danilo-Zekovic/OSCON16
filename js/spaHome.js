@@ -84,6 +84,6 @@
       $container.html( configMap.main_html ).show();
 
       setJqueryMap();
-      console.log("initModule over");
+      console.log(" home initModule over");
 
     };
