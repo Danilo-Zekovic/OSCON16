@@ -22,7 +22,7 @@ app.use('/oscon-test', graphqlHTTP(req => ({
   schema,
   pretty: true,
   // For query/schema debugging turn this on
-  // graphiql: true
+  graphiql: true
 })));
 
 // Generic routers
