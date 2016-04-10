@@ -80,6 +80,19 @@ pollInterval={2000}
 />
 </div>
 
+// This component comes from "Thinking in React"
+let FilterableInfoTable = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <InfoTable
+          url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"
+          />
+      </div>
+      );
+    }
+  });
+
 /*
   // Original data from React demo site
   let testData = [

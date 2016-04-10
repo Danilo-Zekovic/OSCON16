@@ -80,26 +80,14 @@ let SearchBar = React.createClass({
     }
   });
 
-// This component is also currently non-functional
-let FilterableInfoTable = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <InfoTable
-          url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"
-          />
-      </div>
-      );
-    }
-  });
-
 // end private members
 
 // public methods
 export default function browseInitModule ( $container ) {
   console.log("browse page reached");
   ReactDOM.render(
-    <FilterableInfoTable />,
+    <InfoTable
+      url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"/>,
     document.getElementById('browse-view')
   );
   console.log("browse initModule over");
