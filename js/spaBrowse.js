@@ -5,30 +5,27 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Griddle from 'griddle-react'
 
 // private methods
 
+// Options for Griddle table generator
+let  columnMeta = [
+  {
+    "columnName": "title",
+    "displayName": "Image Title"
+  },
+  {
+    "columnName": "filename",
+    "displayName": "Filename"
+  },
+  {
+    "columnName": "description",
+    "displayName": "Description"
+  }
+ ];
 
-// This example pilfered from "Thinking in React" on the React website
-
-// We're not using the category component at present
-let CategoryRow = React.createClass({
-      render: function() {
-        return (<tr><th colSpan="2">{this.props.category}</th></tr>);
-      }
-    });
-
-let InfoRow = React.createClass({
-  render: function() {
-      return (
-        <tr>
-          <td>{this.props.record.title}</td>
-          <td>{this.props.record.filename}</td>
-        </tr>
-      );
-    }
-  });
-
+// We have hijacked the semantics of this element and patched in Griggle
 let InfoTable = React.createClass({
   // IRONY: Using an AJAX call to get the GrqphQL data from server!
   loadRecordsFromServer: function() {
@@ -54,24 +51,20 @@ let InfoTable = React.createClass({
     // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
-    var rows = [];
-    this.state.records.forEach(function(record) {
-      rows.push(<InfoRow record={record} key={record._id} />);
-    });
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Filename</th>
-          </tr>
-        </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      );
-    }
+      <div>
+        <center><h2>Current image data</h2></center>
+        <SearchBar />
+        <Griddle results={this.state.records}
+          columns={['title','filename', "description"]}
+          columnMetadata={columnMeta}
+          showSettings={true}
+          />
+      </div>
+    )}
   });
 
+// Currently doesn't do anything
 let SearchBar = React.createClass({
   render: function() {
     return (
@@ -87,31 +80,18 @@ let SearchBar = React.createClass({
     }
   });
 
+// This component is also currently non-functional
 let FilterableInfoTable = React.createClass({
   render: function() {
     return (
       <div>
-        <SearchBar />
         <InfoTable
-          url="/oscon-test?query=query+{imageRecs{_id, title, filename}}"
+          url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"
           />
       </div>
       );
     }
   });
-
-/*
-  let RECORDS = [
-    {category: 'RPPC Postcards', circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
-    {category: 'RPPC Postcards', circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
-    {category: 'RPPC Postcards', circa: '1914', restricted: false, name: 'HannaWest.png'},
-    {category: 'Family Photos B/W', circa: '1936', restricted: true, name: 'JAWilliams2.tif'},
-    {category: 'Family Photos B/W', circa: '1922', restricted: false, name: 'Dawson1922.png'},
-    {category: 'Family Photos B/W', circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
-  ];
-*/
-
-let RECORDS=[];
 
 // end private members
 
@@ -119,7 +99,7 @@ let RECORDS=[];
 export default function browseInitModule ( $container ) {
   console.log("browse page reached");
   ReactDOM.render(
-    <FilterableInfoTable records={RECORDS} />,
+    <FilterableInfoTable />,
     document.getElementById('browse-view')
   );
   console.log("browse initModule over");
