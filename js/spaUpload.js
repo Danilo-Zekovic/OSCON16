@@ -61,8 +61,6 @@ let
       acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
     },
 
-    initModule, serverURL, imageNames;
-
 // end local variables
 
 // public method
