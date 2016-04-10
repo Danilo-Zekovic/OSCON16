@@ -136,7 +136,7 @@ var RecordList = React.createClass({
 
 
 // public method
-export default function initModule ( $container ) {
+export default function uploadInitModule ( $container ) {
 
   console.log("upload page reached");
 

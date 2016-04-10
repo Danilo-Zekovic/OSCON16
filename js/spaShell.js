@@ -201,7 +201,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // Begin Public method /initModule
-  export default function ( $container ) {
+  export default function shellInitModule ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
 
