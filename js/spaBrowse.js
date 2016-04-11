@@ -6,8 +6,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Griddle from 'griddle-react'
-import OpenSeaDragon from 'openseadragon'
-import Button from 'react-button'
+
 
 // private methods
 
@@ -15,20 +14,9 @@ import Button from 'react-button'
 // Save this: return <a href={url}>{this.props.data}</a>
 // Note that for now we just hardcode the link target in the url variable
 
-// Theme for our Button
-
-let themes = Button.themes;
-let theme = {
-    disabledStyle: { background: 'gray'},
-    overStyle: { background: 'red'},
-    activeStyle: { background: 'red'},
-    pressedStyle: {background: 'magenta', fontWeight: 'bold'},
-    overPressedStyle: {background: 'purple', fontWeight: 'bold'}
-}
-
 let LinkComponent = React.createClass({
     render: function(){
-      let url = "http://knuckle.palaver.net:3001/iroq.html";
+      let url = "/zoomer?show=brush";
       return <a href={url}>{this.props.data}</a>
     }
   });
@@ -82,9 +70,6 @@ let InfoTable = React.createClass({
       <div>
         <center><h2>Current image data</h2></center>
         <SearchBar />
-        <div id="img-box" style={{width: 800, height: 600}}>
-        </div>
-          <Button onClick={()=>renderImage('brush')} />
         <Griddle results={this.state.records}
           columns={['title','filename', "description"]}
           columnMetadata={customColumnMetadata}
@@ -110,18 +95,6 @@ let SearchBar = React.createClass({
     }
   });
 
-  let renderImage = function(selection) {
-        // Clear out any previous contents
-        //document.getElementById("browse-view").innerHTML = "";
-        // Set filename
-        let baseName = selection + '.dzi';
-        // Render viewer note nasty "node_modules" parameter!
-        let viewer = OpenSeadragon({
-          id: "img-box",
-          prefixUrl: "./node_modules/openseadragon/build/openseadragon/images/",
-          tileSources: baseName
-        });
-      }
 // end private members/methods
 
 // public methods
