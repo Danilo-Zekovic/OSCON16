@@ -198,6 +198,8 @@ let changeSelectedMenuItem = function(newItem) {
 
   let zoomer = function ( ctx ) {
     console.log("Zoomer in shell");
+    let url=document.URL;
+    console.log('Got URL ' + url);
     if( currentMod != jqueryMap.$zoomer ) {
       changeSelectedMenuItem('menuZoom');
       // Hide current main content
@@ -258,7 +260,6 @@ let changeSelectedMenuItem = function(newItem) {
     page('/upload', upload);
     page('/browse', browse);
     page('/zoomer', zoomer);
-    page('/zoomer/:show', zoomer)
     //page('/dashboard', dashboard);
     page('/login', login);
     page();
