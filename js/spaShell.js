@@ -154,7 +154,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let upload = function() {
-    console.log("Reached upload");
+    console.log("Upload in shell");
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
       currentMod.hide();
@@ -171,7 +171,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let login = function () {
-    console.log("Reached login");
+    console.log("Login in shell");
     if( currentMod != jqueryMap.$login ) {
       changeSelectedMenuItem('menuLog');
       // Hide current main content
@@ -184,7 +184,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let browse = function () {
-    console.log("Reached browse");
+    console.log("Browse in shell");
     if( currentMod != jqueryMap.$browse ) {
       changeSelectedMenuItem('menuBrowse');
       // Hide current main content
@@ -196,8 +196,8 @@ let changeSelectedMenuItem = function(newItem) {
     }
   }
 
-  let zoomer = function () {
-    console.log("Reached zoomer");
+  let zoomer = function ( ctx ) {
+    console.log("Zoomer in shell");
     if( currentMod != jqueryMap.$zoomer ) {
       changeSelectedMenuItem('menuZoom');
       // Hide current main content
@@ -258,6 +258,7 @@ let changeSelectedMenuItem = function(newItem) {
     page('/upload', upload);
     page('/browse', browse);
     page('/zoomer', zoomer);
+    page('/zoomer/:show', zoomer)
     //page('/dashboard', dashboard);
     page('/login', login);
     page();

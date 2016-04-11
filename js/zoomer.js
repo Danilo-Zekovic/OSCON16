@@ -18,18 +18,18 @@ let renderImage = function(selection) {
 // end private members/methods
 
 // public methods
-export default function zoomerInitModule ( ) {
-  let id = 'brush';
-  console.log("zoomer page reached");
+export default function zoomerInitModule ( path ) {
+  let id = 'bremer';
+  console.log("zoomer init mod");
   let url=document.URL;
-  console.log('Got URL' + url);
-  let regex = /localhost:5000\/zoomer\?show=(\w+)/
+  console.log('Got URL ' + url);
+  let regex = /[^/]+\?show=(\w+)/
   if (url.match(regex)) {
-    console.log('Setting new id');
      id = url.match(regex)[1];
+     console.log('Setting new id of ' + id);
   }
-//  let id = url.match(regex)[1];
-  console.log(typeof id);
-  //if (id == null ) { id = 'brush'};
-    renderImage(id);
+  //  let id = url.match(regex)[1];
+  if (id == null ) { id = 'brush'};
+  //id = 'brush';
+  renderImage(id);
 }

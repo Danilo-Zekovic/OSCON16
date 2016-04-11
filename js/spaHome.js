@@ -74,7 +74,7 @@
     // public methods
     export default function initModule ( $container ) {
 
-      console.log("home page reached");
+      console.log("home module reached");
       //set to taste
       //serverURL = 'http://localhost:4000';
 

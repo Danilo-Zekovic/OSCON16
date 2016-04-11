@@ -99,7 +99,7 @@ let SearchBar = React.createClass({
 
 // public methods
 export default function browseInitModule ( ) {
-  console.log("browse page reached");
+  console.log("browse init mod");
   ReactDOM.render(
     <InfoTable
       url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"/>,
