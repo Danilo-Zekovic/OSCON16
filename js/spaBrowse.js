@@ -3,208 +3,107 @@
  *   Handle uplads of new images
  */
 
-  'use strict';
-  import React from 'react'
-  import ReactDOM from 'react-dom'
-  
-  // begin local variables
-  let
-    // Configuration and setup for DropZoneComponent
-    componentConfig = {
-      iconFiletypes: ['.jpg', '.png', '.gif','tif'],
-      showFiletypeIcon: true,
-      postUrl: '/uploadHandler'
-    },
-    eventHandlers = {
-    // This one receives the dropzone object as the first parameter
-    // and can be used to additional work with the dropzone.js
-    // object
-    init: null,
-    // All of these receive the event as first parameter:
-    drop: null,
-    dragstart: null,
-    dragend: null,
-    dragenter: null,
-    dragover: null,
-    dragleave: null,
-    // All of these receive the file as first parameter:
-    addedfile: null,
-    removedfile: null,
-    thumbnail: null,
-    error: null,
-    processing: null,
-    uploadprogress: null,
-    sending: null,
-    success: null,
-    complete: null,
-    canceled: null,
-    maxfilesreached: null,
-    maxfilesexceeded: null,
-    // All of these receive a list of files as first parameter
-    // and are only called if the uploadMultiple option
-    // in djsConfig is true:
-    processingmultiple: null,
-    sendingmultiple: null,
-    successmultiple: null,
-    completemultiple: null,
-    canceledmultiple: null,
-    // Special Events
-    totaluploadprogress: null,
-    reset: null,
-    queuecomplete: null
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Griddle from 'griddle-react'
+
+
+// private methods
+
+// Options for Griddle table generator
+// Save this: return <a href={url}>{this.props.data}</a>
+// Note that for now we just hardcode the link target in the url variable
+
+let LinkComponent = React.createClass({
+    render: function(){
+      let url = "/zoomer?show=brush";
+      return <a href={url}>{this.props.data}</a>
+    }
+  });
+
+
+let  customColumnMetadata = [
+  {
+    "columnName": "title",
+    "displayName": "Image Title"
   },
-    djsConfig = {
-      addRemoveLinks: true,
-      acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
-    },
+  {
+    "columnName": "filename",
+    "displayName": "Filename",
+    "customComponent": LinkComponent
+  },
+  {
+    "columnName": "description",
+    "displayName": "Description"
+  }
+ ];
 
-    // Legacy code
-    configMap = {
-      main_html : String()
-        +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'
-        +     '<div class="pure-g">'
-
-        +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
-        +       '<p>Description what user is suposed to do here</p>'
-        +       '<form class="pure-form pure-form-stacked">'
-        +         '<fieldset>'
-
-        +           '<label for="name">Your Name</label>'
-        +           '<input id="name" type="text" placeholder="Your Name">'
-
-        +           '<label for="time">When was it taken</label>'
-        +           '<input id="time" type="text" placeholder="Time">'
-
-        +           '<label for="location">Where was the picture taken</label>'
-        +           '<input id="location" type="text" placeholder="Location?">'
-
-        +           '<button type="submit" class="pure-button">Upload</button>'
-        +         '</fieldset>'
-
-        +     '</div>'
-    },
-
-    stateMap = {
-      $container : undefined
-    },
-
-    jqueryMap = {},
-    initModule, serverURL;
-    // end local variables
-
-    // Figure out later where these belong
-    // var React = require('react');
-    // var Router = require('react-router');
-
-    let setJqueryMap = function () {
-      var $container = stateMap.$container;
-
-      jqueryMap = {
-        $container : $container
-      };
-    };
-
-    // public methods
-    export default function initModule ( $container ) {
-
-      console.log("upload page reached");
-      //set to taste
-      //serverURL = 'http://localhost:4000';
-
-      // load HTML and jquery collections
-      stateMap.$container = $container;
-      $container.hide();
-
-  // This example pilfered from "Thinking in React" on the React website
-  // This is a comment that means nothing
-  let ImageCategoryRow = React.createClass({
-        render: function() {
-          return (<tr><th colSpan="2">{this.props.category}</th></tr>);
-        }
+// We have hijacked the semantics of this element and patched in Griddle
+let InfoTable = React.createClass({
+  // IRONY: Using an AJAX call to get the GrqphQL data from server!
+  loadRecordsFromServer: function() {
+      $.ajax({
+        type: "POST",
+        url: this.props.url,
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+          // console.log('Please print!! ' + JSON.stringify(data.data.imageRecs));
+          this.setState({records: data.data.imageRecs});
+        }.bind(this),
+          error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
       });
+    },
+  getInitialState: function() {
+    // Should this be a call to loadRecordsFromServer?
+    return {records: []};
+  },
+  componentDidMount: function() {
+    this.loadRecordsFromServer();
+    // This polls the server; not quite sure why . . .
+    // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  },
+  render: function() {
+    return (
+      <div>
+        <center><h2>Current image data</h2></center>
+        <SearchBar />
+        <Griddle results={this.state.records}
+          columns={['title','filename', "description"]}
+          columnMetadata={customColumnMetadata}
+          showSettings={true}
+          />
+      </div>
+    )}
+  });
 
-  let ImageRow = React.createClass({
-    render: function() {
-      var name = this.props.image.restricted ?
-        this.props.image.name :
-        <span style={{color: 'red'}}>
-          {this.props.image.name}
-        </span>;
-      return (
-        <tr>
-          <td>{name}</td>
-          <td>{this.props.image.circa}</td>
-        </tr>
+// Currently doesn't do anything
+let SearchBar = React.createClass({
+  render: function() {
+    return (
+      <form>
+        <input type="text" placeholder="Search...disabled" />
+        <p>
+          <input type="checkbox" />
+          {' '}
+          Only show public records
+        </p>
+      </form>
       );
     }
   });
 
-  let ImageTable = React.createClass({
-    render: function() {
-      var rows = [];
-      var lastCategory = null;
-      this.props.images.forEach(function(image) {
-        if (image.category !== lastCategory) {
-          rows.push(<ImageCategoryRow category={image.category} key={image.category} />);
-        }
-        rows.push(<ImageRow image={image} key={image.name} />);
-        lastCategory = image.category;
-      });
-      return (
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>circa</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      );
-    }
-  });
+// end private members/methods
 
-  let SearchBar = React.createClass({
-    render: function() {
-      return (
-        <form>
-          <input type="text" placeholder="Search..." />
-          <p>
-            <input type="checkbox" />
-            {' '}
-            Only show public images
-          </p>
-        </form>
-      );
-    }
-  });
-
-  let FilterableImageTable = React.createClass({
-    render: function() {
-      return (
-        <div>
-          <SearchBar />
-          <ImageTable images={this.props.images} />
-        </div>
-      );
-    }
-  });
-
-
-  let IMAGES = [
-    {category: 'RPPC Postcards', circa: '1889', restricted: true, name: 'IroquoisBridge.tif'},
-    {category: 'RPPC Postcards', circa: '1906', restricted: true, name: 'GangwerHotel.tif'},
-    {category: 'RPPC Postcards', circa: '1914', restricted: false, name: 'HannaWest.png'},
-    {category: 'Family Photos B/W', circa: '1936', restricted: true, name: 'JAWilliams2.tif'},
-    {category: 'Family Photos B/W', circa: '1922', restricted: false, name: 'Dawson1922.png'},
-    {category: 'Family Photos B/W', circa: '1950', restricted: true, name: 'PowlerReunion.tif'}
-  ];
+// public methods
+export default function browseInitModule ( ) {
+  console.log("browse init mod");
   ReactDOM.render(
-    <FilterableImageTable images={IMAGES} />,
+    <InfoTable
+      url="/oscon-test?query=query+{imageRecs{_id, title, filename, description}}"/>,
     document.getElementById('browse-view')
   );
-      // $container.html( configMap.main_html ).show();
-      setJqueryMap();
-      console.log('Does react exist? ' + typeof(React));
-      console.log("upload initModule over");
-    };
+  console.log("browse initModule over");
+};

@@ -34,14 +34,22 @@ configRoutes = function ( router, server ) {
   });
 
   router.get('/upload', function(req, res) {
+    console.log('Server upload chosen');
     res.sendFile('index.html', options);
   });
 
   router.get('/browse', function(req, res) {
+    console.log('Server browse chosen');
+    res.sendFile('index.html', options);
+  });
+
+  router.get('/zoomer', function(req, res) {
+    console.log('Server zoomer chosen');
     res.sendFile('index.html', options);
   });
 
   router.get('/login', function(req, res) {
+    console.log('Server login chosen');
     res.sendFile('index.html', options);
   });
 

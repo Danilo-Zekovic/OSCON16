@@ -3,20 +3,20 @@
  *   Handle uplads of new images
  */
 
-  'use strict';
-  import React from 'react'
-  import ReactDOM from 'react-dom'
-  import DropZoneComponent from 'react-dropzone-component'
+'use strict';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import DropZoneComponent from 'react-dropzone-component'
 
   // begin local variables
-  let
-    // Configuration and setup for DropZoneComponent
-    componentConfig = {
-      iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
-      showFiletypeIcon: true,
-      postUrl: '/uploadHandler'
-    },
-    eventHandlers = {
+let
+  // Configuration and setup for DropZoneComponent
+  componentConfig = {
+    iconFiletypes: ['.jpg', '.png', '.gif', 'tif'],
+    showFiletypeIcon: true,
+    postUrl: '/uploadHandler'
+  },
+  eventHandlers = {
     // This one receives the dropzone object as the first parameter
     // and can be used to additional work with the dropzone.js
     // object
@@ -53,77 +53,24 @@
     totaluploadprogress: null,
     reset: null,
     queuecomplete: null
-  },
+    },
     djsConfig = {
       addRemoveLinks: true,
       acceptedFiles: "image/jpeg,image/png,image/gif,image/tiff"
-    },
-
-    // Legacy code
-    configMap = {
-      main_html : String()
-        +     '<h2 class="content-head is-center">UPLOAD YOUR images</h2>'
-        +     '<div class="pure-g">'
-
-        +     '<div class="l-box-lrg pure-u-1 pure-u-md-2-5">'
-        +       '<p>Description what user is suposed to do here</p>'
-        +       '<form class="pure-form pure-form-stacked">'
-        +         '<fieldset>'
-
-        +           '<label for="name">Your Name</label>'
-        +           '<input id="name" type="text" placeholder="Your Name">'
-
-        +           '<label for="time">When was it taken</label>'
-        +           '<input id="time" type="text" placeholder="Time">'
-
-        +           '<label for="location">Where was the picture taken</label>'
-        +           '<input id="location" type="text" placeholder="Location?">'
-
-        +           '<button type="submit" class="pure-button">Upload</button>'
-        +         '</fieldset>'
-
-        +     '</div>'
-    },
-
-    stateMap = {
-      $container : undefined
-    },
-
-    jqueryMap = {},
-    initModule, serverURL;
-    // end local variables
-
-    // Figure out later where these belong
-    // var React = require('react');
-    // var Router = require('react-router');
-
-    let setJqueryMap = function () {
-      var $container = stateMap.$container;
-
-      jqueryMap = {
-        $container : $container
-      };
     };
 
-    // public methods
-    export default function initModule ( $container ) {
+// end local variables
 
-      console.log("upload page reached");
-      //set to taste
-      //serverURL = 'http://localhost:4000';
+// public method
+export default function uploadInitModule ( $container ) {
 
-      // load HTML and jquery collections
-      stateMap.$container = $container;
-      $container.hide();
-
+  console.log("upload module reached");
+  // This constitutes the whole view to the user, so far
   ReactDOM.render(
     <DropZoneComponent  config={componentConfig}
                         eventHandlers={eventHandlers}
                         djsConfig={djsConfig} />,
     document.getElementById('upload-view')
-  );
-      // $container.html( configMap.main_html ).show();
-      setJqueryMap();
-      console.log('Does react exist? ' + typeof(React));
-      console.log("upload initModule over");
-    };
+    );
+  // console.log("upload initModule over");
+  };

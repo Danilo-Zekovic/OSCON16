@@ -9,6 +9,7 @@ import uploadInitModule from './spaUpload'
 import homeInitModule from './spaHome'
 import loginInitModule from './spaLogin'
 import browseInitModule from './spaBrowse'
+import zoomerInitModule from './zoomer'
 
   let configMap = {
       main_html : String()
@@ -20,6 +21,7 @@ import browseInitModule from './spaBrowse'
       +       '<li id="menuHome" class="pure-menu-item pure-menu-selected"><a href="/" class="pure-menu-link">Home</a></li>'
       +       '<li id="menuUp" class="pure-menu-item"><a href="/upload" class="pure-menu-link">Upload</a></li>'
       +       '<li id="menuBrowse" class="pure-menu-item"><a href="/browse" class="pure-menu-link">Browse</a></li>'
+      +       '<li id="menuZoom" class="pure-menu-item"><a href="/zoomer" class="pure-menu-link">Zoomer</a></li>'
       +       '<li id="menuDash" class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>'
       +       '<li id="menuLog" class="pure-menu-item"><a href="/login" class="pure-menu-link">Login/Sign Up</a></li>'
       +       '<li class="icon" id="threeL">'
@@ -46,6 +48,10 @@ import browseInitModule from './spaBrowse'
 
       +     '<section><div id="browse-view">'
       +     '</div></section>'
+
+      +     '<section><div style="width: 800px; height: 600px;" id="zoomer-view">'
+      +     '</div></section>'
+
 
       +     '<section><div id="dashboard-view">'
       +     '</div></section>'
@@ -110,6 +116,7 @@ import browseInitModule from './spaBrowse'
       $home      : $container.find('#home-view'),
       $upload    : $container.find('#upload-view'),
       $browse    : $container.find('#browse-view'),
+      $zoomer    : $container.find('#zoomer-view'),
       $dashboard : $container.find('#dashboard-view'),
       $login     : $container.find('#login-view'),
       $splashLog : $container.find('#login')
@@ -147,7 +154,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let upload = function() {
-    console.log("Reached upload");
+    console.log("Upload in shell");
     if( currentMod != jqueryMap.$upload ) {
       changeSelectedMenuItem('menuUp');
       currentMod.hide();
@@ -164,7 +171,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let login = function () {
-    console.log("Reached login");
+    console.log("Login in shell");
     if( currentMod != jqueryMap.$login ) {
       changeSelectedMenuItem('menuLog');
       // Hide current main content
@@ -177,7 +184,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   let browse = function () {
-    console.log("Reached browse");
+    console.log("Browse in shell");
     if( currentMod != jqueryMap.$browse ) {
       changeSelectedMenuItem('menuBrowse');
       // Hide current main content
@@ -185,6 +192,21 @@ let changeSelectedMenuItem = function(newItem) {
       // In this case we also have to hide the "#login" div
       jqueryMap.$splashLog.hide();
       currentMod = jqueryMap.$browse;
+      currentMod.show();
+    }
+  }
+
+  let zoomer = function ( ctx ) {
+    console.log("Zoomer in shell");
+    let url=document.URL;
+    console.log('Got URL ' + url);
+    if( currentMod != jqueryMap.$zoomer ) {
+      changeSelectedMenuItem('menuZoom');
+      // Hide current main content
+      currentMod.hide();
+      // In this case we also have to hide the "#login" div
+      jqueryMap.$splashLog.hide();
+      currentMod = jqueryMap.$zoomer;
       currentMod.show();
     }
   }
@@ -201,7 +223,7 @@ let changeSelectedMenuItem = function(newItem) {
   }
 
   // Begin Public method /initModule
-  export default function ( $container ) {
+  export default function shellInitModule ( $container ) {
     // load HTML and map jQuery collections
     stateMap.$container = $container;
 
@@ -215,6 +237,7 @@ let changeSelectedMenuItem = function(newItem) {
     homeInitModule(jqueryMap.$home);
     uploadInitModule(jqueryMap.$upload);
     browseInitModule(jqueryMap.$browse);
+    zoomerInitModule(jqueryMap.$zoomer);
 
     // Set up content for both #login and #login-view divs
     loginInitModule(jqueryMap.$login);
@@ -225,6 +248,7 @@ let changeSelectedMenuItem = function(newItem) {
     jqueryMap.$upload.hide();
     jqueryMap.$browse.hide();
     jqueryMap.$login.hide();
+    jqueryMap.$zoomer.hide();
 
     // Default content is "home" screen
     currentMod = jqueryMap.$home;
@@ -235,6 +259,7 @@ let changeSelectedMenuItem = function(newItem) {
     page('/', index);
     page('/upload', upload);
     page('/browse', browse);
+    page('/zoomer', zoomer);
     //page('/dashboard', dashboard);
     page('/login', login);
     page();

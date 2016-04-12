@@ -74,7 +74,7 @@
     // public methods
     export default function initModule ( $container ) {
 
-      console.log("home page reached");
+      console.log("home module reached");
       //set to taste
       //serverURL = 'http://localhost:4000';
 
@@ -84,6 +84,6 @@
       $container.html( configMap.main_html ).show();
 
       setJqueryMap();
-      console.log("initModule over");
+      console.log(" home initModule over");
 
     };

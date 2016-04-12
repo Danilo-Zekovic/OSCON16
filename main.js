@@ -2,6 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Main entry point for browser bundle
 import spa from './js/spa';
 
 // Start the SPA
