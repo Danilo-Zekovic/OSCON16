@@ -1,5 +1,4 @@
 import OpenSeaDragon from 'openseadragon'
-import Button from 'react-button'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
