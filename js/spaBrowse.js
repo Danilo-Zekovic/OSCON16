@@ -88,7 +88,7 @@ let SearchBar = React.createClass({
         <p>
           <input type="checkbox" />
           {' '}
-          Only show public records
+          Example checkbox to implement a binary filter
         </p>
       </form>
       );
