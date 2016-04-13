@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path'
 import graphql from 'graphql';
 import graphqlHTTP from 'express-graphql';
 import mongoose from 'mongoose';
@@ -28,7 +29,7 @@ app.use('/oscon-test', graphqlHTTP(req => ({
 // Generic routers
 routes.configRoutes( router, server);
 app.use('/', router);
-app.use( express.static( __dirname + '/' ) );
+app.use(express.static(path.join(__dirname, '/')))
 
 // Connect mongo database
 mongoose.connect('mongodb://localhost/oscon-test');
