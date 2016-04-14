@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Sample SPA for OSCON 2016",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "build": "webpack",
-    "devel": "webpack-dev-server"
+  "scripts":{
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base . --history-api-fallback",
+    "start:prod": "webpack && node index.js"
   },
   "keywords": [],
   "author": "",
