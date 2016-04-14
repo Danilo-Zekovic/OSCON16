@@ -12,6 +12,10 @@ module.exports = {
       target: 'http://localhost:5000',
       secure: false,
       },
+      '/oscon-test*': {
+      target: 'http://localhost:5000',
+      secure: false,
+      },
     },
   },
   module: {
