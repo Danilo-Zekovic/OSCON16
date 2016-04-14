@@ -1,7 +1,7 @@
 module.exports = {
   entry: './main.js',
   output: {
-    path: 'public',
+    path: './',
     filename: 'bundle.js'
   },
   devServer: {
@@ -9,6 +9,10 @@ module.exports = {
     inline: true,
     proxy: {
     '/uploadHandler*': {
+      target: 'http://localhost:5000',
+      secure: false,
+      },
+      '/oscon-test*': {
       target: 'http://localhost:5000',
       secure: false,
       },
