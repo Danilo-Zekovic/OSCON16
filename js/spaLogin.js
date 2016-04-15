@@ -4,18 +4,35 @@
  * testing to display login view
  */
 
- import React from 'react'
- import ReactDOM from 'react-dom'
- import Griddle from 'griddle-react'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Griddle from 'griddle-react'
 
 
- let Login = React.createClass({
-   render: function() {
-     return (
-       <h2 className="content-head is-center">Sign up now.  Help us preserve historical images.</h2>
-     )
-   }
- })
+// Currently doesn't do anything
+let LoginBtn = React.createClass({
+  render: function() {
+    return (
+      <a href="/auth/google" type="submit" className="google-btn pure-button">
+        <span className="fa fa-google-plus">
+        </span> Google
+      </a>
+    )
+  }
+})
+
+
+let Login = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <h2 className="content-head is-center">Sign up now.  Help us preserve historical images.</h2>,
+        <center><LoginBtn /></center>
+      </div>
+
+    )
+  }
+})
 
  // public methods
  export default function browseInitModule ( ) {
