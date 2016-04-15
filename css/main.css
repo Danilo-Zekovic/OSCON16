@@ -10,6 +10,7 @@
 @import "filepicker.css";                  /* Brian Capouch */
 @import "dropzone.min.css";                /* Brian Capouch */
 @import "uploader.css";                    /* Brian Capouch */
+@import "login.css";                       /* Danilo Zekovic */
 
 .splash-container {
   background-image: url("img/background.png");
